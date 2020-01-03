@@ -55,4 +55,8 @@ class KeyChainManager {
             return nil
         }
     }
+    
+    func removeServerTokenKey() {
+        UserDefaults.standard.removeObject(forKey: serverTokenKey)
+    }
 }

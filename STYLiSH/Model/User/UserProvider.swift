@@ -39,7 +39,9 @@ class UserProvider {
                     let userObject = try JSONDecoder().decode(STSuccessParser<UserObject>.self, from: data)
 
                     KeyChainManager.shared.token = userObject.data.accessToken
-
+                    
+                    UserDataManager.shared.saveUser(user: userObject.data.user)
+                    
                     completion(Result.success(()))
 
                 } catch {

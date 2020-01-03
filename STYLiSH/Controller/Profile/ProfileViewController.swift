@@ -9,7 +9,13 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-
+    
+    @IBOutlet weak var userImageView: UIImageView!
+    
+    @IBOutlet weak var userNameLabel: UILabel!
+    
+    @IBOutlet weak var userEmailLabel: UILabel!
+    
     @IBOutlet weak var collectionView: UICollectionView! {
 
         didSet {
@@ -24,9 +30,21 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        UserDataManager.shared.loadUser { [weak self] (user) in
+            guard let strongSelf = self else { return }
+            strongSelf.userNameLabel.text = user.name
+            strongSelf.userEmailLabel.text = user.email
+        }
+        
     }
 
+    @IBAction func signOut(_ sender: UIButton) {
+        KeyChainManager.shared.removeServerTokenKey()
+        UserDataManager.shared.removeUser()
+        tabBarController?.selectedIndex = 0
+    }
+    
 }
 
 extension ProfileViewController: UICollectionViewDataSource {

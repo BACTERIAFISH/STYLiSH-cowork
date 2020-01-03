@@ -63,11 +63,11 @@ class AuthViewController: STBaseViewController {
 
             case .success:
 
-                LKProgressHUD.showSuccess(text: "STYLiSH 登入成功")
+                LKProgressHUD.showSuccess(text: "登入成功")
 
             case .failure:
 
-                LKProgressHUD.showSuccess(text: "STYLiSH 登入失敗!")
+                LKProgressHUD.showSuccess(text: "登入失敗!")
             }
 
             DispatchQueue.main.async {
