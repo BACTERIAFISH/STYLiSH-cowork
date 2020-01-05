@@ -126,6 +126,10 @@
 		CF990CBB23C00FD800CD34C9 /* NewUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF990CBA23C00FD800CD34C9 /* NewUserRequest.swift */; };
 		CF990CBD23C010D900CD34C9 /* NewHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF990CBC23C010D900CD34C9 /* NewHTTPClient.swift */; };
 		CF990CBF23C02C0800CD34C9 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF990CBE23C02C0800CD34C9 /* SignupViewController.swift */; };
+		CF990CC123C1D4C700CD34C9 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF990CC023C1D4C700CD34C9 /* HistoryViewController.swift */; };
+		CF990CC523C1ED2E00CD34C9 /* ShippingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF990CC423C1ED2E00CD34C9 /* ShippingViewController.swift */; };
+		CF990CC723C1F31E00CD34C9 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF990CC623C1F31E00CD34C9 /* UserProfileViewController.swift */; };
+		CF990CC923C1FC1C00CD34C9 /* UserProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF990CC823C1FC1C00CD34C9 /* UserProfileTableViewCell.swift */; };
 		CFAECE0D23BF42A500DB1AA8 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAECE0C23BF42A500DB1AA8 /* UserDataManager.swift */; };
 		D306B883B370DFD3ED8ACD74 /* Pods_STYLiSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42C2B4AF3EF2ABFF2BB9F7AB /* Pods_STYLiSH.framework */; };
 /* End PBXBuildFile section */
@@ -264,6 +268,10 @@
 		CF990CBA23C00FD800CD34C9 /* NewUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserRequest.swift; sourceTree = "<group>"; };
 		CF990CBC23C010D900CD34C9 /* NewHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHTTPClient.swift; sourceTree = "<group>"; };
 		CF990CBE23C02C0800CD34C9 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		CF990CC023C1D4C700CD34C9 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		CF990CC423C1ED2E00CD34C9 /* ShippingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingViewController.swift; sourceTree = "<group>"; };
+		CF990CC623C1F31E00CD34C9 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
+		CF990CC823C1FC1C00CD34C9 /* UserProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileTableViewCell.swift; sourceTree = "<group>"; };
 		CFAECE0C23BF42A500DB1AA8 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 		E921004E251C9FC3CBC174F5 /* Pods-STYLiSH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STYLiSH.release.xcconfig"; path = "Target Support Files/Pods-STYLiSH/Pods-STYLiSH.release.xcconfig"; sourceTree = "<group>"; };
 		F551E8F447D7C8DC42B53B98 /* Pods-STYLiSH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STYLiSH.debug.xcconfig"; path = "Target Support Files/Pods-STYLiSH/Pods-STYLiSH.debug.xcconfig"; sourceTree = "<group>"; };
@@ -346,6 +354,9 @@
 			isa = PBXGroup;
 			children = (
 				3C1ACFE322151F50005583E2 /* ProfileViewController.swift */,
+				CF990CC023C1D4C700CD34C9 /* HistoryViewController.swift */,
+				CF990CC423C1ED2E00CD34C9 /* ShippingViewController.swift */,
+				CF990CC623C1F31E00CD34C9 /* UserProfileViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -355,6 +366,7 @@
 			children = (
 				3C1ACFE822152D29005583E2 /* ProfileCollectionViewCell.swift */,
 				3C1ACFEA22153114005583E2 /* ProfileCollectionReusableView.swift */,
+				CF990CC823C1FC1C00CD34C9 /* UserProfileTableViewCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -812,6 +824,7 @@
 				3CD29117221135E2008B8A2D /* Resources */,
 				BD721BFB42BEC7C4CF30F644 /* [CP] Embed Pods Frameworks */,
 				3C6FABF322FD26EA00226316 /* SwiftLint */,
+				DF431DFA3B22D8CB2CE8D96D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -963,6 +976,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		DF431DFA3B22D8CB2CE8D96D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-STYLiSH/Pods-STYLiSH-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-STYLiSH/Pods-STYLiSH-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-STYLiSH/Pods-STYLiSH-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -993,6 +1023,7 @@
 				3C831C8A22EAAF7A00112298 /* STPaymentInfoTableViewCell.swift in Sources */,
 				3C990F6C22E5C78200F2FCEA /* ProductDetailView.swift in Sources */,
 				3C546BE722EAC79D0082C655 /* STOrderHeaderView.swift in Sources */,
+				CF990CC123C1D4C700CD34C9 /* HistoryViewController.swift in Sources */,
 				3C5DD7CC2227EFFF0053B67A /* TrolleyViewController.swift in Sources */,
 				3C6020EA222BC00100312958 /* UILabel+Extension.swift in Sources */,
 				3CB80E76222FCBE60095F18C /* STConstant.swift in Sources */,
@@ -1002,6 +1033,7 @@
 				3CE7A51C223089C3009FF003 /* OrderProvider.swift in Sources */,
 				3C0DD87A221350B300F5237E /* UIColor+Extension.swift in Sources */,
 				3CC706162216B34800CAD850 /* ProductTableViewCell.swift in Sources */,
+				CF990CC723C1F31E00CD34C9 /* UserProfileViewController.swift in Sources */,
 				CFAECE0D23BF42A500DB1AA8 /* UserDataManager.swift in Sources */,
 				3CEBE077222F718D0064EF82 /* StorageManager.swift in Sources */,
 				3C09F51C22114A0100C5B3E2 /* STTabBarViewController.swift in Sources */,
@@ -1030,6 +1062,7 @@
 				3C1ACFE622152B1F005583E2 /* UIScreen+Extension.swift in Sources */,
 				3C6020DD222B90DF00312958 /* ProductDetailCell.swift in Sources */,
 				3C09F51E22114E1900C5B3E2 /* UIStoryboard+Extension.swift in Sources */,
+				CF990CC523C1ED2E00CD34C9 /* ShippingViewController.swift in Sources */,
 				3C0DD87E2213533F00F5237E /* LobbyTableViewCell.swift in Sources */,
 				3C33690E2226F53E008A5A7A /* TrolleyTableViewCell.swift in Sources */,
 				3CC706122216955900CAD850 /* STBaseNavigationController.swift in Sources */,
@@ -1037,6 +1070,7 @@
 				3CE7A517223061A9009FF003 /* UserRequest.swift in Sources */,
 				3C09F52122115AB700C5B3E2 /* UIImage+Extension.swift in Sources */,
 				3C6B8FE8222CE53100804EFE /* BasicSelectionCell.swift in Sources */,
+				CF990CC923C1FC1C00CD34C9 /* UserProfileTableViewCell.swift in Sources */,
 				3C41B8472216667000112F94 /* ProductViewController.swift in Sources */,
 				3CE7A51322305916009FF003 /* UserProvider.swift in Sources */,
 				3CE7A51E22308D34009FF003 /* OrderObject.swift in Sources */,

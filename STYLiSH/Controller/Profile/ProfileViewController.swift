@@ -30,6 +30,8 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        userImageView.layer.cornerRadius = 30
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -38,6 +40,10 @@ class ProfileViewController: UIViewController {
             guard let strongSelf = self else { return }
             strongSelf.userNameLabel.text = user.name
             strongSelf.userEmailLabel.text = user.email
+            if let picture = user.picture {
+                strongSelf.userImageView.kf.setImage(with: URL(string: picture))
+            }
+            
         }
     }
 
@@ -117,7 +123,7 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
 
         if indexPath.section == 0 {
 
-            return CGSize(width: UIScreen.width / 5.0, height: 60.0)
+            return CGSize(width: UIScreen.width / 4.0, height: 60.0)
 
         } else if indexPath.section == 1 {
 
@@ -162,4 +168,22 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
 
         return CGSize(width: UIScreen.width, height: 48.0)
     }
+}
+
+extension ProfileViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            if indexPath.item == 0 {
+                performSegue(withIdentifier: "ShippingSegue", sender: nil)
+            } else if indexPath.item == 1 {
+                performSegue(withIdentifier: "HistorySegue", sender: nil)
+            }
+            
+        } else if indexPath.section == 1 {
+            if indexPath.item == 0 {
+                performSegue(withIdentifier: "UserProfileSegue", sender: nil)
+            }
+        }
+    }
+
 }

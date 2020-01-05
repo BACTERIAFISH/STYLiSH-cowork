@@ -15,4 +15,6 @@ struct STConstant {
     static let tapPayAppKey = "STTapPayAppKey"
 
     static let urlKey = "STBaseURL"
+    
+    static let urlKeyWC = "WCBaseURL"
 }

@@ -236,4 +236,39 @@ class UserProvider {
         })
     }
 
+    func getProfile(completion: @escaping (Result<Profile>) -> Void) {
+
+        guard let token = KeyChainManager.shared.token else {
+
+            return completion(Result.failure(STYLiSHSignInError.noToken))
+        }
+        
+        let request = STUserRequest.getProfile(token)
+
+        HTTPClient.shared.request(request, completion: { result in
+
+            switch result {
+
+            case .success(let data):
+
+                do {
+
+                    let profile = try JSONDecoder().decode(STSuccessParser<Profile>.self, from: data)
+
+                    DispatchQueue.main.async {
+
+                        completion(Result.success(profile.data))
+                    }
+
+                } catch {
+
+                    completion(Result.failure(error))
+                }
+
+            case .failure(let error):
+
+                completion(Result.failure(error))
+            }
+        })
+    }
 }

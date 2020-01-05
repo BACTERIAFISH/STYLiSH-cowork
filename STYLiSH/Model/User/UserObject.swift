@@ -37,3 +37,21 @@ struct Reciept: Codable {
 
     let number: String
 }
+
+struct Profile: Codable {
+    
+    let id: Int
+
+    let provider: String
+
+    let name: String
+
+    let email: String
+
+    let picture: String?
+    
+    let birthday: String
+    
+    let points: Int
+}
+

@@ -22,8 +22,8 @@ protocol WCRequest {
 extension WCRequest {
     
     func makeRequest() -> URLRequest {
-
-        let urlString = "https://thewenchin.com/api/1.0" + endPoint
+        
+        let urlString = Bundle.STValueForString(key: STConstant.urlKeyWC) + endPoint
 
         let url = URL(string: urlString)!
 

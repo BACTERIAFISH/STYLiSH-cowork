@@ -73,9 +73,11 @@ enum OrderItem: ProfileItem {
 
         case .awaitingPayment: return NSLocalizedString("待付款")
 
-        case .awaitingShipment: return NSLocalizedString("待出貨")
+        //case .awaitingShipment: return NSLocalizedString("待出貨")
+        case .awaitingShipment: return NSLocalizedString("歷史訂單")
 
-        case .shipped: return NSLocalizedString("待簽收")
+        //case .shipped: return NSLocalizedString("待簽收")
+        case .shipped: return NSLocalizedString("物流進度")
 
         case .awaitingReview: return NSLocalizedString("待評價")
 
@@ -122,6 +124,7 @@ enum ServiceItem: ProfileItem {
         case .bindPhone: return UIImage.asset(.Icons_24px_RegisterCellphone)
 
         case .setting: return UIImage.asset(.Icons_24px_Settings)
+            
         }
     }
 
@@ -143,7 +146,9 @@ enum ServiceItem: ProfileItem {
 
         case .bindPhone: return NSLocalizedString("手機綁定")
 
-        case .setting: return NSLocalizedString("設定")
+        //case .setting: return NSLocalizedString("設定")
+        case .setting: return NSLocalizedString("用戶資訊")
+            
         }
     }
 }

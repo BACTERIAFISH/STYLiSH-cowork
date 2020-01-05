@@ -52,11 +52,13 @@
 		<false/>
 	</dict>
 	<key>STBaseURL</key>
-	<string>https://api.appworks-school.tw/api/1.0</string>
+	<string>https://thewenchin.com/api/1.0</string>
 	<key>STTapPayAppID</key>
 	<integer>12348</integer>
 	<key>STTapPayAppKey</key>
 	<string>app_pa1pQcKoY22IlnSXq5m5WP5jFKzoRG58VEXpT7wU62ud7mMbDOGzCYIlzzLF</string>
+	<key>WCBaseURL</key>
+	<string>https://thewenchin.com/api/1.0</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

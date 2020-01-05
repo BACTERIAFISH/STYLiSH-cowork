@@ -55,7 +55,11 @@
 
 "待付款" = "Wait for payment";
 
+"歷史訂單" = "Order history";
+
 "待出貨" = "Wait for shipping";
+
+"物流進度" = "Shipping status";
 
 "待簽收" = "Wait for signing";
 
@@ -84,3 +88,5 @@
 "更多服務" = "More Services";
 
 "查看全部" = "See All";
+
+"用戶資訊" = "User Profile";

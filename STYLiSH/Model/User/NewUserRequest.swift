@@ -16,8 +16,6 @@ enum WCUserRequest: WCRequest {
     
     case signinFB(String)
 
-    case checkout(token: String, body: Data?)
-
     var headers: [String: String] {
 
         switch self {
@@ -29,13 +27,6 @@ enum WCUserRequest: WCRequest {
         case .signin, .signinFB:
 
             return [STHTTPHeaderField.contentType.rawValue: STHTTPHeaderValue.json.rawValue]
-
-        case .checkout(let token, _):
-
-            return [
-                STHTTPHeaderField.auth.rawValue: "Bearer \(token)",
-                STHTTPHeaderField.contentType.rawValue: STHTTPHeaderValue.json.rawValue
-            ]
         }
     }
 
@@ -73,10 +64,6 @@ enum WCUserRequest: WCRequest {
             ]
             
             return try? JSONSerialization.data(withJSONObject: dict, options: .prettyPrinted)
-
-        case .checkout(_, let body):
-
-            return body
         }
     }
 
@@ -84,7 +71,7 @@ enum WCUserRequest: WCRequest {
 
         switch self {
 
-        case .signup, .signin, .signinFB, .checkout: return STHTTPMethod.POST.rawValue
+        case .signup, .signin, .signinFB: return STHTTPMethod.POST.rawValue
 
         }
     }
@@ -97,7 +84,6 @@ enum WCUserRequest: WCRequest {
 
         case .signin, .signinFB: return "/user/signin"
 
-        case .checkout: return "/order/checkout"
         }
     }
 

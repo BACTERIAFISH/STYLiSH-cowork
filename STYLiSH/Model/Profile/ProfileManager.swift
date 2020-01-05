@@ -14,11 +14,11 @@ class ProfileManager {
         title: NSLocalizedString("我的訂單"),
         action: ProfileSegue.segueAllOrder,
         items: [
-            OrderItem.awaitingPayment,
-            OrderItem.awaitingShipment,
+            //OrderItem.awaitingPayment,
             OrderItem.shipped,
-            OrderItem.awaitingReview,
-            OrderItem.exchange
+            OrderItem.awaitingShipment
+            //OrderItem.awaitingReview,
+            //OrderItem.exchange
         ]
     )
 
@@ -26,14 +26,14 @@ class ProfileManager {
         title: NSLocalizedString("更多服務"),
         action: nil,
         items: [
+            ServiceItem.setting,
             ServiceItem.collcetion,
             ServiceItem.notification,
-            ServiceItem.refund,
+            //ServiceItem.refund,
             ServiceItem.address,
-            ServiceItem.customService,
-            ServiceItem.systomReport,
-            ServiceItem.bindPhone,
-            ServiceItem.setting
+            ServiceItem.customService
+            //ServiceItem.systomReport,
+            //ServiceItem.bindPhone,
         ]
     )
 
