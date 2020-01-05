@@ -88,9 +88,40 @@ class UserProvider {
         })
     }
     
-    func signInToWC(fbToken: String, completion: @escaping (Result<Void>) -> Void) {
+    func signInToWC(email: String, password: String, completion: @escaping (Result<Void>) -> Void) {
 
-        NewHTTPClient.shared.request(WCUserRequest.signin(fbToken), completion: { result in
+        NewHTTPClient.shared.request(WCUserRequest.signin(email: email, password: password), completion: { result in
+
+            switch result {
+
+            case .success(let data):
+
+                do {
+
+                    let userObject = try JSONDecoder().decode(STSuccessParser<UserObject>.self, from: data)
+
+                    KeyChainManager.shared.token = userObject.data.accessToken
+                    
+                    UserDataManager.shared.saveUser(user: userObject.data.user)
+                    
+                    completion(Result.success(()))
+
+                } catch {
+
+                    completion(Result.failure(error))
+                }
+
+            case .failure(let error):
+
+                completion(Result.failure(error))
+            }
+
+        })
+    }
+    
+    func signInFBToWC(fbToken: String, completion: @escaping (Result<Void>) -> Void) {
+
+        NewHTTPClient.shared.request(WCUserRequest.signinFB(fbToken), completion: { result in
 
             switch result {
 

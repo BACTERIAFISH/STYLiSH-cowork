@@ -64,7 +64,8 @@ class AuthViewController: STBaseViewController {
     }
     
     @IBAction func onNativeSignin(_ sender: UIButton) {
-        
+        guard let email = emailTextField.text, let password = passwordTextField.text else { return }
+        onWCSignIn(email: email, password: password)
     }
     
     @IBAction func onFacebookLogin() {
@@ -76,7 +77,7 @@ class AuthViewController: STBaseViewController {
             case .success(let token):
 
                 // self?.onSTYLiSHSignIn(token: token)
-                self?.onWCSignIn(token: token)
+                self?.onWCSignInFB(token: token)
 
             case .failure:
 
@@ -111,11 +112,11 @@ class AuthViewController: STBaseViewController {
         })
     }
     
-    func onWCSignIn(token: String) {
+    func onWCSignInFB(token: String) {
 
         LKProgressHUD.show()
 
-        userProvider.signInToWC(fbToken: token, completion: { [weak self] result in
+        userProvider.signInFBToWC(fbToken: token, completion: { [weak self] result in
 
             LKProgressHUD.dismiss()
 
@@ -135,6 +136,32 @@ class AuthViewController: STBaseViewController {
                 self?.presentingViewController?.dismiss(animated: false, completion: nil)
             }
         })
+    }
+    
+    func onWCSignIn(email: String, password: String) {
+
+        LKProgressHUD.show()
+        
+        userProvider.signInToWC(email: email, password: password) { [weak self] result in
+            
+            LKProgressHUD.dismiss()
+
+            switch result {
+
+            case .success:
+
+                LKProgressHUD.showSuccess(text: "登入成功")
+
+            case .failure:
+
+                LKProgressHUD.showSuccess(text: "登入失敗!")
+            }
+
+            DispatchQueue.main.async {
+
+                self?.presentingViewController?.dismiss(animated: false, completion: nil)
+            }
+        }
     }
 
 }
