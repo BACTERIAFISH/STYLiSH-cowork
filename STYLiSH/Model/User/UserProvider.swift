@@ -194,6 +194,37 @@ class UserProvider {
 
         })
     }
+    
+    func signInGoogleToWC(token: String, completion: @escaping (Result<Void>) -> Void) {
+
+        NewHTTPClient.shared.request(WCUserRequest.signinGoogle(token), completion: { result in
+
+            switch result {
+
+            case .success(let data):
+
+                do {
+
+                    let userObject = try JSONDecoder().decode(STSuccessParser<UserObject>.self, from: data)
+
+                    KeyChainManager.shared.token = userObject.data.accessToken
+                    
+                    UserDataManager.shared.saveUser(user: userObject.data.user)
+                    
+                    completion(Result.success(()))
+
+                } catch {
+
+                    completion(Result.failure(error))
+                }
+
+            case .failure(let error):
+
+                completion(Result.failure(error))
+            }
+
+        })
+    }
 
     func checkout(order: Order, prime: String, completion: @escaping (Result<Reciept>) -> Void) {
 

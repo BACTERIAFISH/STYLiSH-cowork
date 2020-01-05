@@ -21,7 +21,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YKh-PK-dkx">
-                                <rect key="frame" x="0.0" y="249.5" width="375" height="417.5"/>
+                                <rect key="frame" x="0.0" y="177.5" width="375" height="489.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="請先登入會員" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KYN-rZ-Xq9">
                                         <rect key="frame" x="16" y="24" width="108" height="26.5"/>
@@ -63,19 +63,6 @@
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="16"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L51-58-3lp">
-                                        <rect key="frame" x="16" y="345.5" width="343" height="48"/>
-                                        <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="48" id="eqH-cE-dF4"/>
-                                        </constraints>
-                                        <state key="normal" title="Facebook 登入">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="onFacebookLogin" destination="ZYD-N5-aSi" eventType="touchUpInside" id="grV-3o-TNx"/>
-                                        </connections>
-                                    </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9kv-hH-haZ">
                                         <rect key="frame" x="16" y="209.5" width="343" height="48"/>
                                         <color key="backgroundColor" name="B6"/>
@@ -114,10 +101,33 @@
                                             </button>
                                         </subviews>
                                     </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zpA-IP-7gk">
+                                        <rect key="frame" x="16" y="345.5" width="343" height="48"/>
+                                        <color key="backgroundColor" name="B6"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="Qb8-8d-114"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L51-58-3lp">
+                                        <rect key="frame" x="16" y="417.5" width="343" height="48"/>
+                                        <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59607843137254901" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="eqH-cE-dF4"/>
+                                        </constraints>
+                                        <state key="normal" title="Facebook 登入">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onFacebookLogin" destination="ZYD-N5-aSi" eventType="touchUpInside" id="grV-3o-TNx"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="9kv-hH-haZ" firstAttribute="leading" secondItem="YKh-PK-dkx" secondAttribute="leading" constant="16" id="115-rL-37P"/>
+                                    <constraint firstItem="L51-58-3lp" firstAttribute="top" secondItem="zpA-IP-7gk" secondAttribute="bottom" constant="24" id="2Oe-rY-YNa"/>
+                                    <constraint firstAttribute="trailing" secondItem="zpA-IP-7gk" secondAttribute="trailing" constant="16" id="4Aw-j6-zLH"/>
+                                    <constraint firstItem="zpA-IP-7gk" firstAttribute="leading" secondItem="YKh-PK-dkx" secondAttribute="leading" constant="16" id="8ck-Aq-i45"/>
                                     <constraint firstAttribute="bottomMargin" secondItem="L51-58-3lp" secondAttribute="bottom" constant="16" id="Ell-R7-lUY"/>
                                     <constraint firstAttribute="trailing" secondItem="L51-58-3lp" secondAttribute="trailing" constant="16" id="FJp-zr-9Cy"/>
                                     <constraint firstItem="Kpm-B6-YRM" firstAttribute="top" secondItem="D6W-U8-6MM" secondAttribute="bottom" constant="24" id="IoM-zG-bI5"/>
@@ -135,7 +145,7 @@
                                     <constraint firstItem="uqx-Xb-QMW" firstAttribute="leading" secondItem="YKh-PK-dkx" secondAttribute="leading" constant="16" id="WU9-BW-2hT"/>
                                     <constraint firstItem="UaM-LH-iKw" firstAttribute="top" secondItem="KYN-rZ-Xq9" secondAttribute="bottom" constant="24" id="XNT-Fk-Gcm"/>
                                     <constraint firstItem="KYN-rZ-Xq9" firstAttribute="top" secondItem="YKh-PK-dkx" secondAttribute="top" constant="24" id="cB0-Gd-RRl"/>
-                                    <constraint firstItem="L51-58-3lp" firstAttribute="top" secondItem="uqx-Xb-QMW" secondAttribute="bottom" constant="24" id="rSp-Xa-fO5"/>
+                                    <constraint firstItem="zpA-IP-7gk" firstAttribute="top" secondItem="uqx-Xb-QMW" secondAttribute="bottom" constant="24" id="q6r-If-9gh"/>
                                     <constraint firstAttribute="trailing" secondItem="UaM-LH-iKw" secondAttribute="trailing" constant="16" id="reg-b3-8vz"/>
                                     <constraint firstItem="9kv-hH-haZ" firstAttribute="top" secondItem="Kpm-B6-YRM" secondAttribute="bottom" constant="16" id="uoH-FL-Cda"/>
                                     <constraint firstItem="UaM-LH-iKw" firstAttribute="leading" secondItem="YKh-PK-dkx" secondAttribute="leading" constant="16" id="xEk-WS-Up1"/>
@@ -164,6 +174,7 @@
                         <outlet property="contentView" destination="YKh-PK-dkx" id="iqH-Ab-zkx"/>
                         <outlet property="contentViewBottomConstraint" destination="wzL-s5-shp" id="Ax3-En-f0A"/>
                         <outlet property="emailTextField" destination="Kpm-B6-YRM" id="MDn-El-ISD"/>
+                        <outlet property="googleSignInView" destination="zpA-IP-7gk" id="asC-iI-f6c"/>
                         <outlet property="passwordTextField" destination="9kv-hH-haZ" id="S3u-S0-zT1"/>
                     </connections>
                 </viewController>

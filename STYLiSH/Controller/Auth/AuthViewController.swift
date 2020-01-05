@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class AuthViewController: STBaseViewController {
 
@@ -18,6 +19,8 @@ class AuthViewController: STBaseViewController {
     
     @IBOutlet weak var passwordTextField: UITextField!
     
+    @IBOutlet weak var googleSignInView: UIView!
+    
     let userProvider = UserProvider()
 
     override func viewDidLoad() {
@@ -27,6 +30,10 @@ class AuthViewController: STBaseViewController {
         
         contentViewBottomConstraint.constant = contentView.frame.height
         view.layoutIfNeeded()
+        
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        
+        googleSignInView.addSubview(GIDSignInButton(frame: CGRect(x: 0, y: 0, width: googleSignInView.frame.width, height: googleSignInView.frame.height)))
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -164,4 +171,30 @@ class AuthViewController: STBaseViewController {
         }
     }
 
+    func onWCSignInGoogle(token: String) {
+        
+        LKProgressHUD.show()
+        
+        userProvider.signInGoogleToWC(token: token, completion: { [weak self] result in
+            
+            LKProgressHUD.dismiss()
+            
+            switch result {
+                
+            case .success:
+                
+                LKProgressHUD.showSuccess(text: "登入成功")
+                
+            case .failure:
+                
+                LKProgressHUD.showSuccess(text: "登入失敗!")
+            }
+            
+            DispatchQueue.main.async {
+                
+                self?.presentingViewController?.dismiss(animated: false, completion: nil)
+            }
+        })
+    }
+    
 }

@@ -50,8 +50,7 @@ struct Profile: Codable {
 
     let picture: String?
     
-    let birthday: String
+    let birthday: String?
     
     let points: Int
 }
-
