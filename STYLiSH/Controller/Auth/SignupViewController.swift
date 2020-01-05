@@ -94,15 +94,12 @@ class SignupViewController: STBaseViewController {
         
         userProvider.signUpToWC(email: email, password: password, name: name, birthday: birthday) { [weak self] result in
 
-            // guard let strongSelf = self else { return }
-
             switch result {
 
             case .success:
                 DispatchQueue.main.async {
-                    hud.textLabel.text = "註冊成功!"
-                    hud.indicatorView = JGProgressHUDSuccessIndicatorView()
-                    hud.dismiss(afterDelay: 1)
+                    LKProgressHUD.show(type: .success("註冊成功!"))
+                    self?.backToRoot()
                 }
 
             case .failure:
@@ -110,13 +107,10 @@ class SignupViewController: STBaseViewController {
                     hud.textLabel.text = "註冊失敗!"
                     hud.indicatorView = JGProgressHUDErrorIndicatorView()
                     hud.dismiss(afterDelay: 1)
+                    self?.presentingViewController?.dismiss(animated: false, completion: nil)
                 }
             }
 
-            DispatchQueue.main.async {
-                // self?.backToRoot()
-                self?.presentingViewController?.dismiss(animated: false, completion: nil)
-            }
         }
     }
     

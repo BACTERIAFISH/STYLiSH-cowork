@@ -30,13 +30,15 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         UserDataManager.shared.loadUser { [weak self] (user) in
             guard let strongSelf = self else { return }
             strongSelf.userNameLabel.text = user.name
             strongSelf.userEmailLabel.text = user.email
         }
-        
     }
 
     @IBAction func signOut(_ sender: UIButton) {

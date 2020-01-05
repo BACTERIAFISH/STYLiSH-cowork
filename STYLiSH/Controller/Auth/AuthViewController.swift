@@ -64,6 +64,7 @@ class AuthViewController: STBaseViewController {
     }
     
     @IBAction func onNativeSignin(_ sender: UIButton) {
+        
     }
     
     @IBAction func onFacebookLogin() {
