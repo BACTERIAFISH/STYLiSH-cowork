@@ -30,7 +30,7 @@ struct User: Codable {
 
     let email: String
 
-    let picture: String
+    let picture: String?
 }
 
 struct Reciept: Codable {

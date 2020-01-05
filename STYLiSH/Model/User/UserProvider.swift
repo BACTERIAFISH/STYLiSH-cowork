@@ -56,10 +56,72 @@ class UserProvider {
 
         })
     }
+    
+    func signUpToWC(email: String, password: String, name: String, birthday: String, completion: @escaping (Result<Void>) -> Void) {
+
+        NewHTTPClient.shared.request(WCUserRequest.signup(email: email, password: password, name: name, birthday: birthday), completion: { result in
+
+            switch result {
+
+            case .success(let data):
+
+                do {
+
+                    let userObject = try JSONDecoder().decode(STSuccessParser<UserObject>.self, from: data)
+
+                    KeyChainManager.shared.token = userObject.data.accessToken
+                    
+                    UserDataManager.shared.saveUser(user: userObject.data.user)
+                    
+                    completion(Result.success(()))
+
+                } catch {
+
+                    completion(Result.failure(error))
+                }
+
+            case .failure(let error):
+
+                completion(Result.failure(error))
+            }
+
+        })
+    }
+    
+    func signInToWC(fbToken: String, completion: @escaping (Result<Void>) -> Void) {
+
+        NewHTTPClient.shared.request(WCUserRequest.signin(fbToken), completion: { result in
+
+            switch result {
+
+            case .success(let data):
+
+                do {
+
+                    let userObject = try JSONDecoder().decode(STSuccessParser<UserObject>.self, from: data)
+
+                    KeyChainManager.shared.token = userObject.data.accessToken
+                    
+                    UserDataManager.shared.saveUser(user: userObject.data.user)
+                    
+                    completion(Result.success(()))
+
+                } catch {
+
+                    completion(Result.failure(error))
+                }
+
+            case .failure(let error):
+
+                completion(Result.failure(error))
+            }
+
+        })
+    }
 
     func loginWithFaceBook(from: UIViewController, completion: @escaping FacebookResponse) {
         
-        LoginManager().logIn(permissions: ["email"], from: from, handler: { (result, error) in
+        LoginManager().logIn(permissions: ["email", "user_birthday"], from: from, handler: { (result, error) in
 
             guard error == nil else { return completion(Result.failure(error!)) }
 
@@ -78,7 +140,7 @@ class UserProvider {
 
             case false:
 
-                guard result.declinedPermissions.contains("email") == false else {
+                guard result.declinedPermissions.contains("email") == false, result.declinedPermissions.contains("user_birthday") == false else {
 
                     let fbError = FacebookError.denineEmailPermission
 

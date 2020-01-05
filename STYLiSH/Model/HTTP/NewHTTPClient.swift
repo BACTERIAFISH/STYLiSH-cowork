@@ -1,51 +1,14 @@
 //
-//  HTTPClient.swift
+//  NewHTTPClient.swift
 //  STYLiSH
 //
-//  Created by WU CHIH WEI on 2019/2/13.
-//  Copyright © 2019 WU CHIH WEI. All rights reserved.
+//  Created by FISH on 2020/1/4.
+//  Copyright © 2020 WU CHIH WEI. All rights reserved.
 //
 
 import Foundation
 
-enum Result<T> {
-
-    case success(T)
-
-    case failure(Error)
-}
-
-enum STHTTPClientError: Error {
-
-    case decodeDataFail
-
-    case clientError(Data)
-
-    case serverError
-
-    case unexpectedError
-}
-
-enum STHTTPMethod: String {
-
-    case GET
-
-    case POST
-}
-
-enum STHTTPHeaderField: String {
-
-    case contentType = "Content-Type"
-
-    case auth = "Authorization"
-}
-
-enum STHTTPHeaderValue: String {
-
-    case json = "application/json"
-}
-
-protocol STRequest {
+protocol WCRequest {
 
     var headers: [String: String] { get }
 
@@ -56,11 +19,11 @@ protocol STRequest {
     var endPoint: String { get }
 }
 
-extension STRequest {
+extension WCRequest {
     
     func makeRequest() -> URLRequest {
 
-        let urlString = Bundle.STValueForString(key: STConstant.urlKey) + endPoint
+        let urlString = "https://thewenchin.com/api/1.0" + endPoint
 
         let url = URL(string: urlString)!
 
@@ -77,9 +40,9 @@ extension STRequest {
     
 }
 
-class HTTPClient {
+class NewHTTPClient {
 
-    static let shared = HTTPClient()
+    static let shared = NewHTTPClient()
 
     private let decoder = JSONDecoder()
 
@@ -88,12 +51,12 @@ class HTTPClient {
     private init() { }
 
     func request(
-        _ stRequest: STRequest,
+        _ wcRequest: WCRequest,
         completion: @escaping (Result<Data>) -> Void
     ) {
 
         URLSession.shared.dataTask(
-            with: stRequest.makeRequest(),
+            with: wcRequest.makeRequest(),
             completionHandler: { (data, response, error) in
 
             guard error == nil else {
