@@ -18,6 +18,7 @@ class UserDataManager {
     
     func saveUser(user: User) {
         UserDefaults.standard.set(try? PropertyListEncoder().encode(user), forKey: userKey)
+        NotificationCenter.default.post(name: NSNotification.Name("saveUser"), object: self)
     }
     
     func loadUser(completion: ((User) -> Void)) {

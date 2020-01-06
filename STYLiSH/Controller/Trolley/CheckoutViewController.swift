@@ -74,11 +74,18 @@ class CheckoutViewController: STBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        getProfile()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(getProfile), name: NSNotification.Name("saveUser"), object: nil)
+
+    }
+    
+    @objc func getProfile() {
         userProvider.getProfile { [weak self] result in
             switch result {
             case .success(let profile):
                 self?.profile = profile
-                print(profile)
+                self?.tableView.reloadData()
             case .failure(let error):
                 print("get profile error: \(error)")
             }

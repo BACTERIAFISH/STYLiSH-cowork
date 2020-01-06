@@ -55,6 +55,10 @@ class TrolleyViewController: STBaseViewController {
     }
     
     var observation: NSKeyValueObservation?
+    
+    private let userProvider = UserProvider()
+    
+    var profile: Profile?
 
     // MARK: - View Life Cycle
     
@@ -64,12 +68,27 @@ class TrolleyViewController: STBaseViewController {
         tableView.lk_registerCellWithNib(identifier: String(describing: TrolleyTableViewCell.self), bundle: nil)
 
         fetchData()
+        
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 
         StorageManager.shared.save()
+    }
+    
+    @IBAction func showCheckout(_ sender: UIButton) {
+        performSegue(withIdentifier: Segue.checkout, sender: nil)
+//        if let _ = profile {
+//            performSegue(withIdentifier: Segue.checkout, sender: nil)
+//        } else {
+//            if let authVC = UIStoryboard.auth.instantiateInitialViewController() {
+//
+//                authVC.modalPresentationStyle = .overCurrentContext
+//
+//                present(authVC, animated: false, completion: nil)
+//            }
+//        }
     }
     
     // MARK: - Action
@@ -112,6 +131,7 @@ class TrolleyViewController: STBaseViewController {
             let orderProvider = OrderProvider(order: Order(products: orders))
             
             checkoutVC.orderProvider = orderProvider
+            
         }
     }
 }

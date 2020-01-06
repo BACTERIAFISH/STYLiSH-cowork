@@ -37,6 +37,7 @@ class KeyChainManager {
             }
 
             service[uuid] = newValue
+            
         }
 
         get {
@@ -54,6 +55,7 @@ class KeyChainManager {
 
             return nil
         }
+
     }
     
     func removeServerTokenKey() {
