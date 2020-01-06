@@ -38,7 +38,6 @@ class UserProfileViewController: UIViewController {
             switch result {
             case .success(let profile):
                 self?.profile = profile
-                print(profile)
             case .failure(let error):
                 print("get profile error: \(error)")
             }
@@ -48,6 +47,16 @@ class UserProfileViewController: UIViewController {
         userTableView.delegate = self
         
         userImageView.layer.cornerRadius = 30
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.tabBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.tabBar.isHidden = false
     }
     
 }

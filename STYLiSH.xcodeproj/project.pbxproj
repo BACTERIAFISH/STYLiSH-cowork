@@ -123,6 +123,7 @@
 		3CED80AE23012CE400B7DA8E /* NSLocalizedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CED80AD23012CE400B7DA8E /* NSLocalizedString+Extension.swift */; };
 		3CED80AF2301301300B7DA8E /* Trolley.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CED80B12301301300B7DA8E /* Trolley.storyboard */; };
 		3CFAC67322EEF71C00785FAB /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFAC67222EEF71C00785FAB /* String+Extension.swift */; };
+		CF085B8423C38C3B0063CD3C /* ShippingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF085B8323C38C3B0063CD3C /* ShippingTableViewCell.swift */; };
 		CF990CBB23C00FD800CD34C9 /* NewUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF990CBA23C00FD800CD34C9 /* NewUserRequest.swift */; };
 		CF990CBD23C010D900CD34C9 /* NewHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF990CBC23C010D900CD34C9 /* NewHTTPClient.swift */; };
 		CF990CBF23C02C0800CD34C9 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF990CBE23C02C0800CD34C9 /* SignupViewController.swift */; };
@@ -265,6 +266,7 @@
 		3CED80B52301301800B7DA8E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Trolley.strings"; sourceTree = "<group>"; };
 		3CFAC67222EEF71C00785FAB /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		42C2B4AF3EF2ABFF2BB9F7AB /* Pods_STYLiSH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_STYLiSH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF085B8323C38C3B0063CD3C /* ShippingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingTableViewCell.swift; sourceTree = "<group>"; };
 		CF990CBA23C00FD800CD34C9 /* NewUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserRequest.swift; sourceTree = "<group>"; };
 		CF990CBC23C010D900CD34C9 /* NewHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHTTPClient.swift; sourceTree = "<group>"; };
 		CF990CBE23C02C0800CD34C9 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -354,8 +356,8 @@
 			isa = PBXGroup;
 			children = (
 				3C1ACFE322151F50005583E2 /* ProfileViewController.swift */,
-				CF990CC023C1D4C700CD34C9 /* HistoryViewController.swift */,
 				CF990CC423C1ED2E00CD34C9 /* ShippingViewController.swift */,
+				CF990CC023C1D4C700CD34C9 /* HistoryViewController.swift */,
 				CF990CC623C1F31E00CD34C9 /* UserProfileViewController.swift */,
 			);
 			path = Profile;
@@ -366,6 +368,7 @@
 			children = (
 				3C1ACFE822152D29005583E2 /* ProfileCollectionViewCell.swift */,
 				3C1ACFEA22153114005583E2 /* ProfileCollectionReusableView.swift */,
+				CF085B8323C38C3B0063CD3C /* ShippingTableViewCell.swift */,
 				CF990CC823C1FC1C00CD34C9 /* UserProfileTableViewCell.swift */,
 			);
 			path = Profile;
@@ -1067,6 +1070,7 @@
 				3C33690E2226F53E008A5A7A /* TrolleyTableViewCell.swift in Sources */,
 				3CC706122216955900CAD850 /* STBaseNavigationController.swift in Sources */,
 				3C8F191922E5997B00EECE90 /* LobbyTableViewHeaderView.swift in Sources */,
+				CF085B8423C38C3B0063CD3C /* ShippingTableViewCell.swift in Sources */,
 				3CE7A517223061A9009FF003 /* UserRequest.swift in Sources */,
 				3C09F52122115AB700C5B3E2 /* UIImage+Extension.swift in Sources */,
 				3C6B8FE8222CE53100804EFE /* BasicSelectionCell.swift in Sources */,

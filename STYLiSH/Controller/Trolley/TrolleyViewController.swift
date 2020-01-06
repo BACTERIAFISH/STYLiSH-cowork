@@ -79,16 +79,6 @@ class TrolleyViewController: STBaseViewController {
     
     @IBAction func showCheckout(_ sender: UIButton) {
         performSegue(withIdentifier: Segue.checkout, sender: nil)
-//        if let _ = profile {
-//            performSegue(withIdentifier: Segue.checkout, sender: nil)
-//        } else {
-//            if let authVC = UIStoryboard.auth.instantiateInitialViewController() {
-//
-//                authVC.modalPresentationStyle = .overCurrentContext
-//
-//                present(authVC, animated: false, completion: nil)
-//            }
-//        }
     }
     
     // MARK: - Action
