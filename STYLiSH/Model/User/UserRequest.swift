@@ -15,6 +15,10 @@ enum STUserRequest: STRequest {
     case checkout(token: String, body: Data?)
     
     case getProfile(String)
+    
+    case ongoingOrder(String)
+    
+    case getOrder(String)
 
     var headers: [String: String] {
 
@@ -34,6 +38,13 @@ enum STUserRequest: STRequest {
             
             return [STHTTPHeaderField.auth.rawValue: "Bearer \(token)"]
             
+        case .ongoingOrder(let token):
+            
+            return [STHTTPHeaderField.auth.rawValue: "Bearer \(token)"]
+            
+        case .getOrder(let token):
+            
+            return [STHTTPHeaderField.auth.rawValue: "Bearer \(token)"]
         }
         
     }
@@ -55,7 +66,7 @@ enum STUserRequest: STRequest {
 
             return body
             
-        case .getProfile:
+        case .getProfile, .ongoingOrder, .getOrder:
             
             return nil
             
@@ -68,7 +79,7 @@ enum STUserRequest: STRequest {
 
         case .signin, .checkout: return STHTTPMethod.POST.rawValue
             
-        case .getProfile: return STHTTPMethod.GET.rawValue
+        case .getProfile, .ongoingOrder, .getOrder: return STHTTPMethod.GET.rawValue
 
         }
     }
@@ -82,6 +93,10 @@ enum STUserRequest: STRequest {
         case .checkout: return "/order/checkout"
             
         case .getProfile: return "/user/profile"
+            
+        case .ongoingOrder: return "/user/ongoing_order"
+            
+        case .getOrder: return "/user/order"
             
         }
     }

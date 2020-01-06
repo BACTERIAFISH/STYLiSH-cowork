@@ -9,14 +9,22 @@
 import UIKit
 
 class ShippingViewController: UIViewController {
+    
+    private let userProvider = UserProvider()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        userProvider.ongoingOrder { result in
+            switch result {
+            case .success(let orders):
+                print(orders)
+            case .failure(let error):
+                print("ongoing order error: \(error)")
+            }
+        }
     }
     
-
     /*
     // MARK: - Navigation
 

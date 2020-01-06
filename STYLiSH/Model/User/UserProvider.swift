@@ -132,6 +132,7 @@ class UserProvider {
                     let userObject = try JSONDecoder().decode(STSuccessParser<UserObject>.self, from: data)
 
                     KeyChainManager.shared.token = userObject.data.accessToken
+                    print(userObject.data.accessToken)
                     
                     UserDataManager.shared.saveUser(user: userObject.data.user)
                     
@@ -290,6 +291,118 @@ class UserProvider {
                     DispatchQueue.main.async {
 
                         completion(Result.success(profile.data))
+                    }
+
+                } catch {
+
+                    completion(Result.failure(error))
+                }
+
+            case .failure(let error):
+
+                completion(Result.failure(error))
+            }
+        })
+    }
+    
+    func ongoingOrder(completion: @escaping (Result<[WCOrder]>) -> Void) {
+
+        guard let token = KeyChainManager.shared.token else {
+
+            return completion(Result.failure(STYLiSHSignInError.noToken))
+        }
+        
+        let request = STUserRequest.ongoingOrder(token)
+
+        HTTPClient.shared.request(request, completion: { result in
+
+            switch result {
+
+            case .success(let data):
+
+                do {
+                    let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    let ongoingOrder = try decoder.decode(WCOrderData.self, from: data)
+                    
+                    var arr = [WCOrder]()
+                    for orderNotYet in ongoingOrder.data {
+                        guard let data = orderNotYet.details.data(using: .utf8, allowLossyConversion: false) else { return }
+                        
+                        let details = try decoder.decode(WCOrderDetails.self, from: data)
+                        
+                        let order = WCOrder(
+                            id: orderNotYet.id,
+                            number: orderNotYet.number,
+                            time: orderNotYet.time,
+                            status: orderNotYet.status,
+                            details: details,
+                            userId: orderNotYet.userId,
+                            logistics: orderNotYet.logistics,
+                            points: orderNotYet.points,
+                            pointsUsed: orderNotYet.pointsUsed)
+                        arr.append(order)
+                    }
+
+                    DispatchQueue.main.async {
+
+                        completion(Result.success(arr))
+                    }
+
+                } catch {
+
+                    completion(Result.failure(error))
+                }
+
+            case .failure(let error):
+
+                completion(Result.failure(error))
+            }
+        })
+    }
+    
+    func getOrder(completion: @escaping (Result<[WCOrder]>) -> Void) {
+
+        guard let token = KeyChainManager.shared.token else {
+
+            return completion(Result.failure(STYLiSHSignInError.noToken))
+        }
+        
+        let request = STUserRequest.ongoingOrder(token)
+
+        HTTPClient.shared.request(request, completion: { result in
+
+            switch result {
+
+            case .success(let data):
+
+                do {
+                    let decoder = JSONDecoder()
+                    decoder.keyDecodingStrategy = .convertFromSnakeCase
+                    let ongoingOrder = try decoder.decode(WCOrderData.self, from: data)
+                    
+                    var arr = [WCOrder]()
+                    for orderNotYet in ongoingOrder.data {
+                        guard let data = orderNotYet.details.data(using: .utf8, allowLossyConversion: false) else { return }
+                        
+                        let details = try decoder.decode(WCOrderDetails.self, from: data)
+                        
+                        let order = WCOrder(
+                            id: orderNotYet.id,
+                            number: orderNotYet.number,
+                            time: orderNotYet.time,
+                            status: orderNotYet.status,
+                            details: details,
+                            userId: orderNotYet.userId,
+                            logistics: orderNotYet.logistics,
+                            points: orderNotYet.points,
+                            pointsUsed: orderNotYet.pointsUsed)
+                        arr.append(order)
+                    }
+
+                    DispatchQueue.main.async {
+
+                        completion(Result.success(arr))
                     }
 
                 } catch {
