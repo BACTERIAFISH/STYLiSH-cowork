@@ -56,7 +56,7 @@ class ColorSelectionCell: BasicSelectionCell {
 
         titleLbl.text = "選擇顏色"
 
-        titleLbl.characterSpacing = 2.1
+//        titleLbl.characterSpacing = 2.1
     }
 
     override func numberOfItem(_ cell: BasicSelectionCell) -> Int {

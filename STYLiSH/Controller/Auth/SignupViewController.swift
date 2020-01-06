@@ -36,7 +36,7 @@ class SignupViewController: STBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        contentView.layer.cornerRadius = 12
+        //contentView.layer.cornerRadius = 12
 
         contentViewBottomConstraint.constant = contentView.frame.height
         

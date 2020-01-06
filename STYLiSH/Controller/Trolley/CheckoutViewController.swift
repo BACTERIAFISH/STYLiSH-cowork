@@ -67,9 +67,22 @@ class CheckoutViewController: STBaseViewController {
     
     private let userProvider = UserProvider()
     
+    var profile: Profile?
+    
+    var usePoints = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        userProvider.getProfile { [weak self] result in
+            switch result {
+            case .success(let profile):
+                self?.profile = profile
+                print(profile)
+            case .failure(let error):
+                print("get profile error: \(error)")
+            }
+        }
     }
     
     private func setupTableView() {
@@ -125,8 +138,33 @@ class CheckoutViewController: STBaseViewController {
     private func checkoutWithCash() {
         
         StorageManager.shared.deleteAllProduct(completion: { _ in })
-        
-        performSegue(withIdentifier: Segue.success, sender: nil)
+
+        userProvider.checkout(
+            order: orderProvider.order,
+            prime: nil,
+            points: usePoints,
+            completion: { [weak self] result in
+                
+                guard let strongSelf = self else { return }
+            
+                LKProgressHUD.dismiss()
+                
+                switch result {
+                    
+                case .success(let reciept):
+                    
+                    print(reciept)
+                    
+                    strongSelf.performSegue(withIdentifier: Segue.success, sender: nil)
+                    
+                    StorageManager.shared.deleteAllProduct(completion: { _ in })
+                    
+                case .failure(let error):
+                    
+                    //Error Handle
+                    print(error)
+                }
+        })
     }
     
     private func checkoutWithTapPay() {
@@ -141,9 +179,13 @@ class CheckoutViewController: STBaseViewController {
                 
                 guard let strongSelf = self else { return }
                 
+                var order = strongSelf.orderProvider.order
+                order.points = strongSelf.usePoints
+                
                 self?.userProvider.checkout(
-                    order: strongSelf.orderProvider.order,
+                    order: order,
                     prime: prime,
+                    points: strongSelf.usePoints,
                     completion: { result in
                     
                         LKProgressHUD.dismiss()
@@ -323,11 +365,21 @@ extension CheckoutViewController: UITableViewDataSource, UITableViewDelegate {
             productPrice: orderProvider.order.productPrices,
             shipPrice: orderProvider.order.freight,
             productCount: orderProvider.order.amount,
-            payment: orderProvider.order.payment.rawValue,
+            payment: orderProvider.order.payment.title(),
             isCheckoutEnable: canCheckout()
         )
         
         inputCell.checkoutBtn.isEnabled = canCheckout()
+        
+        inputCell.maxPoints = profile?.points
+        
+        inputCell.shipPrice = orderProvider.order.freight
+        
+        inputCell.productPrice = orderProvider.order.productPrices
+        
+        inputCell.passUsePoints = { [weak self] points in
+            self?.usePoints = points
+        }
         
         return inputCell
     }
@@ -364,7 +416,7 @@ extension CheckoutViewController: STPaymentInfoTableViewCellDelegate {
     
     func textsForPickerView(_ cell: STPaymentInfoTableViewCell) -> [String] {
         
-        return orderProvider.payments.map { $0.rawValue }
+        return orderProvider.payments.map { $0.title() }
     }
     
     func isHidden(_ cell: STPaymentInfoTableViewCell, at index: Int) -> Bool {

@@ -226,18 +226,19 @@ class UserProvider {
         })
     }
 
-    func checkout(order: Order, prime: String, completion: @escaping (Result<Reciept>) -> Void) {
+    func checkout(order: Order, prime: String?, points: Int, completion: @escaping (Result<Reciept>) -> Void) {
 
         guard let token = KeyChainManager.shared.token else {
 
             return completion(Result.failure(STYLiSHSignInError.noToken))
         }
+        let body = CheckoutAPIBody(order: order, prime: prime, pointsUsed: points)
         
-        let body = CheckoutAPIBody(order: order, prime: prime)
-        
+        let encoder = JSONEncoder()
+        encoder.keyEncodingStrategy = .convertToSnakeCase
         let request = STUserRequest.checkout(
             token: token,
-            body: try? JSONEncoder().encode(body)
+            body: try? encoder.encode(body)
         )
 
         HTTPClient.shared.request(request, completion: { result in

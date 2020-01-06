@@ -10,9 +10,12 @@ import Foundation
 
 struct CheckoutAPIBody: Encodable {
     
-    let order: Order
+    var order: Order
     
-    let prime: String
+    let prime: String?
+    
+    var pointsUsed: Int
+
 }
 
 struct Order: Encodable {
@@ -92,9 +95,14 @@ struct Order: Encodable {
     }
 
     var totalPrice: Int {
-
+        if let points = points {
+            return productPrices + freight - points
+        }
+        
         return productPrices + freight
     }
+    
+    var points: Int?
 
     var amount: Int {
 
@@ -157,7 +165,7 @@ enum Payment: String, Codable {
 
     case cash
 
-    case credit
+    case credit = "credit_card"
     
     func title() -> String {
         
@@ -185,4 +193,3 @@ struct OrderListObject: Codable {
     
     let qty: Int
 }
-

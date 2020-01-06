@@ -82,9 +82,37 @@ class STPaymentInfoTableViewCell: UITableViewCell {
     
     @IBOutlet weak var checkoutBtn: UIButton!
     
+    @IBOutlet weak var pointsSegmentedControl: UISegmentedControl!
+    
+    @IBOutlet weak var pointsTextField: UITextField!
+    
     private lazy var paymentMethod: [String] = self.delegate?.textsForPickerView(self) ?? []
     
     weak var delegate: STPaymentInfoTableViewCellDelegate?
+    
+    var maxPoints: Int? {
+        didSet {
+            if let maxPoints = maxPoints {
+                pointsTextField.text = String(maxPoints)
+                usePoints = maxPoints
+            }
+        }
+    }
+    
+    var usePoints = 0 {
+        didSet {
+            pointsTextField.text = String(usePoints)
+            passUsePoints?(usePoints)
+            guard let productPrice = productPrice, let shipPrice = shipPrice else { return }
+            totalPriceLabel.text = "NT$ \(shipPrice + productPrice - usePoints)"
+        }
+    }
+    
+    var shipPrice: Int?
+    
+    var productPrice: Int?
+    
+    var passUsePoints: ((Int) -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -123,6 +151,28 @@ class STPaymentInfoTableViewCell: UITableViewCell {
         
         delegate?.checkout(self)
     }
+    
+    @IBAction func togglePointsUse(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            if let maxPoints = maxPoints {
+                usePoints = maxPoints
+            }
+            pointsTextField.isEnabled = true
+        } else {
+            usePoints = 0
+            pointsTextField.isEnabled = false
+        }
+    }
+    
+    @IBAction func pointsTextFieldDidEnd(_ sender: UITextField) {
+        guard let pointsText = sender.text, let maxPoints = maxPoints else { return }
+        if let points = Int(pointsText), points < maxPoints {
+            usePoints = points
+        } else {
+            usePoints = maxPoints
+        }
+    }
+
 }
 
 extension STPaymentInfoTableViewCell: UIPickerViewDataSource, UIPickerViewDelegate {

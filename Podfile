@@ -16,5 +16,5 @@ target 'STYLiSH' do
   pod 'FBSDKLoginKit'
   pod 'SwiftLint'
   pod 'GoogleSignIn'
-  
+
 end

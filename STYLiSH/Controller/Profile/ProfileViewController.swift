@@ -14,8 +14,6 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var userNameLabel: UILabel!
     
-    @IBOutlet weak var userEmailLabel: UILabel!
-    
     @IBOutlet weak var collectionView: UICollectionView! {
 
         didSet {
@@ -39,7 +37,6 @@ class ProfileViewController: UIViewController {
         UserDataManager.shared.loadUser { [weak self] (user) in
             guard let strongSelf = self else { return }
             strongSelf.userNameLabel.text = user.name
-            strongSelf.userEmailLabel.text = user.email
             if let picture = user.picture {
                 strongSelf.userImageView.kf.setImage(with: URL(string: picture))
             }

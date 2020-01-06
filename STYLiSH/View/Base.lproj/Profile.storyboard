@@ -101,28 +101,17 @@
                                             <constraint firstAttribute="width" constant="60" id="o3B-rx-WAr"/>
                                         </constraints>
                                     </imageView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="fL7-Bf-9y2">
-                                        <rect key="frame" x="92" y="16.5" width="93" height="59"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yNj-wu-sFn">
-                                                <rect key="frame" x="0.0" y="0.0" width="93" height="25.5"/>
-                                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="characterSpacing">
-                                                        <real key="value" value="0.0"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q6e-wP-KwH">
-                                                <rect key="frame" x="0.0" y="33.5" width="93" height="25.5"/>
-                                                <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yNj-wu-sFn">
+                                        <rect key="frame" x="92" y="33.5" width="93" height="25.5"/>
+                                        <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="characterSpacing">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v19-F0-Deg">
                                         <rect key="frame" x="318" y="27" width="37" height="38"/>
                                         <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="18"/>
@@ -136,9 +125,9 @@
                                 </subviews>
                                 <color key="backgroundColor" name="B1"/>
                                 <constraints>
-                                    <constraint firstItem="fL7-Bf-9y2" firstAttribute="centerY" secondItem="4fb-Kk-nRw" secondAttribute="centerY" id="0HF-fj-Xfo"/>
+                                    <constraint firstItem="yNj-wu-sFn" firstAttribute="centerY" secondItem="4fb-Kk-nRw" secondAttribute="centerY" id="92J-IH-c2L"/>
+                                    <constraint firstItem="yNj-wu-sFn" firstAttribute="leading" secondItem="n54-dD-RdY" secondAttribute="trailing" constant="16" id="GMu-f3-Vnf"/>
                                     <constraint firstItem="n54-dD-RdY" firstAttribute="top" secondItem="4fb-Kk-nRw" secondAttribute="top" constant="16" id="UHr-hN-xFT"/>
-                                    <constraint firstItem="fL7-Bf-9y2" firstAttribute="leading" secondItem="n54-dD-RdY" secondAttribute="trailing" constant="16" id="ZtY-fU-C4m"/>
                                     <constraint firstItem="v19-F0-Deg" firstAttribute="centerY" secondItem="4fb-Kk-nRw" secondAttribute="centerY" id="gvL-9u-fe6"/>
                                     <constraint firstAttribute="trailing" secondItem="v19-F0-Deg" secondAttribute="trailing" constant="20" id="pko-xG-AKj"/>
                                     <constraint firstItem="n54-dD-RdY" firstAttribute="leading" secondItem="4fb-Kk-nRw" secondAttribute="leading" constant="16" id="vIS-ed-SBc"/>
@@ -161,7 +150,6 @@
                     <navigationItem key="navigationItem" title="個人" id="x05-vx-TQW"/>
                     <connections>
                         <outlet property="collectionView" destination="Rwc-aW-35L" id="zPF-Nk-tPD"/>
-                        <outlet property="userEmailLabel" destination="Q6e-wP-KwH" id="Hzx-04-G2R"/>
                         <outlet property="userImageView" destination="n54-dD-RdY" id="MtY-tG-eYK"/>
                         <outlet property="userNameLabel" destination="yNj-wu-sFn" id="iIP-dR-L7j"/>
                         <segue destination="Mdb-93-oEk" kind="show" identifier="HistorySegue" id="Tcy-6Y-azK"/>
