@@ -78,6 +78,8 @@ class ProductPickerController: UIViewController, UITableViewDataSource, UITableV
             delegate?.valueChange(self)
         }
     }
+    
+    var selectedColorName: String?
 
     var selectedSize: String? {
 
@@ -170,6 +172,8 @@ class ProductPickerController: UIViewController, UITableViewDataSource, UITableV
         colorCell.touchHandler = { [weak self] indexPath in
             
             self?.selectedColor = self?.product?.colors[indexPath.row].code
+            
+            self?.selectedColorName = self?.product?.colors[indexPath.row].name
         }
     }
     

@@ -50,17 +50,19 @@ struct Order: Encodable {
                 let object = product.product,
                 let name = object.title,
                 let color = product.seletedColor,
-                let size = product.seletedSize
+                let size = product.seletedSize,
+                let colorName = product.selectedColorName
             else {
                 
                 return nil
             }
             
+            let orderColor = OrderListColor(name: colorName, code: color)
             let orderObject = OrderListObject(
                 id: String(object.id),
                 name: name, price:
                 Int(object.price),
-                color: color,
+                color: orderColor,
                 size: size,
                 qty: Int(product.amount)
             )
@@ -187,9 +189,16 @@ struct OrderListObject: Codable {
     
     let price: Int
     
-    let color: String
+    let color: OrderListColor
     
     let size: String
     
     let qty: Int
+}
+
+struct OrderListColor: Codable {
+    
+    let name: String
+    
+    let code: String
 }

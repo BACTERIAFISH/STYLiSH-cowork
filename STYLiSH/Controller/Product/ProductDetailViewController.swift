@@ -126,11 +126,12 @@ class ProductDetailViewController: STBaseViewController, UITableViewDataSource, 
             guard let color = pickerViewController?.selectedColor,
                   let size = pickerViewController?.selectedSize,
                   let amount = pickerViewController?.selectedAmount,
-                  let product = product
+                  let product = product,
+                  let colorName = pickerViewController?.selectedColorName
             else { return }
 
             StorageManager.shared.saveOrder(
-                color: color, size: size, amount: amount, product: product,
+                color: color, size: size, amount: amount, product: product, colorName: colorName,
                 completion: { result in
 
                     switch result {

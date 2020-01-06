@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="19B88" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15702" systemVersion="18G1012" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="LSColor" representedClassName="LSColor" syncable="YES" codeGenerationType="class">
         <attribute name="code" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
@@ -8,6 +8,7 @@
     <entity name="LSOrder" representedClassName="LSOrder" syncable="YES" codeGenerationType="class">
         <attribute name="amount" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="createTime" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="selectedColorName" optional="YES" attributeType="String"/>
         <attribute name="seletedColor" optional="YES" attributeType="String"/>
         <attribute name="seletedSize" optional="YES" attributeType="String"/>
         <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="LSProduct" inverseName="order" inverseEntity="LSProduct"/>
@@ -37,7 +38,7 @@
     </entity>
     <elements>
         <element name="LSColor" positionX="-36" positionY="72" width="128" height="90"/>
-        <element name="LSOrder" positionX="-54" positionY="-9" width="128" height="120"/>
+        <element name="LSOrder" positionX="-54" positionY="-9" width="128" height="133"/>
         <element name="LSProduct" positionX="-63" positionY="-18" width="128" height="268"/>
         <element name="LSVariant" positionX="-18" positionY="99" width="128" height="105"/>
     </elements>

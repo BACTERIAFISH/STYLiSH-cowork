@@ -79,8 +79,7 @@ typealias LSOrderResult = (Result<LSOrder>) -> Void
     }
 
     func saveOrder(
-        color: String, size: String, amount: Int, product: Product,
-        completion: (Result<Void>) -> Void) {
+        color: String, size: String, amount: Int, product: Product, colorName: String, completion: (Result<Void>) -> Void) {
 
         let order = LSOrder(context: viewContext)
 
@@ -95,6 +94,8 @@ typealias LSOrderResult = (Result<LSOrder>) -> Void
         order.seletedSize = size
 
         order.product = lsProduct
+        
+        order.selectedColorName = colorName
 
         order.createTime = Int(Date().timeIntervalSince1970).int64()
 
