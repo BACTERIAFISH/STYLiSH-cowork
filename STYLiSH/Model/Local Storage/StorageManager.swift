@@ -155,6 +155,65 @@ typealias LSOrderResult = (Result<LSOrder>) -> Void
             completion(Result.failure(error))
         }
     }
+    
+    func saveFavorite(id: Int, product: Product, completion: (Result<Void>) -> Void = { _ in }) {
+        
+        let favorite = SCFavorite(context: viewContext)
+
+        let lsProduct = LSProduct(context: viewContext)
+
+        lsProduct.mapping(product)
+        
+        favorite.id = id.int64()
+
+        favorite.product = lsProduct
+
+        favorite.createTime = Int(Date().timeIntervalSince1970).int64()
+
+        do {
+            try viewContext.save()
+            completion(Result.success(()))
+        } catch {
+            completion(Result.failure(error))
+        }
+    }
+    
+    func fetchFavorites(completion: (Result<[SCFavorite]>) -> Void) {
+
+        let request: NSFetchRequest<SCFavorite> = SCFavorite.fetchRequest()
+        
+        request.sortDescriptors = [NSSortDescriptor(key: "createTime", ascending: true)]
+
+        do {
+
+            let favorites = try viewContext.fetch(request)
+            
+            //self.orders = orders
+
+            completion(Result.success(favorites))
+
+        } catch {
+
+            completion(Result.failure(error))
+        }
+    }
+    
+    func deleteFavorite(id: Int, completion: (Result<Void>) -> Void = { _ in }) {
+        
+        fetchFavorites { (result) in
+            switch result {
+            case .success(let favorites):
+                for favorite in favorites {
+                    if id == Int(favorite.id) {
+                        viewContext.delete(favorite)
+                    }
+                }
+                completion(Result.success(()))
+            case .failure(let error):
+                completion(Result.failure(error))
+            }
+        }
+    }
 }
 
 // MARK: - Data Operation

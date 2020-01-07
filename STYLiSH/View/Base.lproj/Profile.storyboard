@@ -71,7 +71,7 @@
                                             <color key="textColor" name="B1"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kle-jd-isM">
+                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kle-jd-isM">
                                             <rect key="frame" x="294" y="20" width="65" height="31"/>
                                             <fontDescription key="fontDescription" name="PingFangTC-Regular" family="PingFang TC" pointSize="13"/>
                                             <state key="normal" title="查看全部 &gt;">
@@ -566,7 +566,7 @@
             </objects>
             <point key="canvasLocation" x="24.800000000000001" y="900.89955022488766"/>
         </scene>
-        <!--Detail View Controller-->
+        <!--訂單內容-->
         <scene sceneID="3XX-PR-4YZ">
             <objects>
                 <viewController id="kMX-ZK-6gx" customClass="SHDetailViewController" customModule="STYLiSH" customModuleProvider="target" sceneMemberID="viewController">
@@ -783,7 +783,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tW4-cw-6UP"/>
                     </view>
-                    <navigationItem key="navigationItem" id="l7N-xc-OPL"/>
+                    <navigationItem key="navigationItem" title="訂單內容" id="l7N-xc-OPL"/>
                     <connections>
                         <outlet property="listTableView" destination="p8C-mS-1ig" id="kmW-QJ-R4I"/>
                         <outlet property="numberLabel" destination="gVJ-m1-ndC" id="dCE-mO-hpm"/>

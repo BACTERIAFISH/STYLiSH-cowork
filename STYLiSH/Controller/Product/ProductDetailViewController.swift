@@ -71,6 +71,17 @@ class ProductDetailViewController: STBaseViewController, UITableViewDataSource, 
     override var isHideNavigationBar: Bool { return true }
     
     override var preferredStatusBarStyle: UIStatusBarStyle { return .lightContent }
+    
+    var isFavorite = false {
+        didSet {
+            galleryView.starButton.isEnabled = true
+            if isFavorite {
+                galleryView.starButton.setImage(UIImage(systemName: "star.fill"), for: .normal)
+            } else {
+                galleryView.starButton.setImage(UIImage(systemName: "star"), for: .normal)
+            }
+        }
+    }
 
     // MARK: - View Life Cycle
     override func viewDidLoad() {
@@ -81,6 +92,24 @@ class ProductDetailViewController: STBaseViewController, UITableViewDataSource, 
         guard let product = product else { return }
 
         galleryView.datas = product.images
+        
+        galleryView.starButton.addTarget(self, action: #selector(toggleFavorite), for: .touchUpInside)
+        
+        StorageManager.shared.fetchFavorites { [weak self] result in
+            switch result {
+            case .success(let favorites):
+                guard let product = self?.product else { return }
+                for favorite in favorites {
+                    if product.id == Int(favorite.id) {
+                        self?.isFavorite = true
+                        return
+                    }
+                }
+                self?.isFavorite = false
+            case .failure(let error):
+                print("fetch favorites error: \(error)")
+            }
+        }
     }
 
     private func setupTableView() {
@@ -192,6 +221,34 @@ class ProductDetailViewController: STBaseViewController, UITableViewDataSource, 
             addToCarBtn.isEnabled = false
 
             addToCarBtn.backgroundColor = UIColor.B4
+        }
+    }
+    
+    @objc func toggleFavorite() {
+        guard let product = product else { return }
+        
+        galleryView.starButton.isEnabled = false
+        
+        if isFavorite {
+            StorageManager.shared.deleteFavorite(id: product.id) { [weak self] result in
+                switch result {
+                case .success:
+                    self?.isFavorite = false
+                case .failure(let error):
+                    print("delete favorite error: \(error)")
+                    self?.isFavorite = true
+                }
+            }
+        } else {
+            StorageManager.shared.saveFavorite(id: product.id, product: product) { [weak self] result in
+                switch result {
+                case .success:
+                    self?.isFavorite = true
+                case .failure(let error):
+                    print("add favorite error: \(error)")
+                    self?.isFavorite = false
+                }
+            }
         }
     }
 

@@ -72,6 +72,16 @@ class LKGalleryView: UIView, UICollectionViewDataSource, UICollectionViewDelegat
 
         return control
     }()
+    
+    lazy var starButton: UIButton = {
+        let button = UIButton()
+        button.isEnabled = false
+        button.tintColor = UIColor.hexStringToUIColor(hex: "FFC408")
+        let image = UIImage(systemName: "star")
+        button.setImage(image, for: .normal)
+        
+        return button
+    }()
 
     var datas: [String] = [] {
 
@@ -108,6 +118,14 @@ class LKGalleryView: UIView, UICollectionViewDataSource, UICollectionViewDelegat
         pageControl.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -16.0).isActive = true
 
         pageControl.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16.0).isActive = true
+    
+        starButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        addSubview(starButton)
+        
+        starButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24).isActive = true
+        
+        starButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24).isActive = true
     }
 
     // MARK: - UICollectionViewDataSource

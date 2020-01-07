@@ -32,7 +32,7 @@ class SHDetailTableViewCell: UITableViewCell {
         super.awakeFromNib()
         
         colorView.layer.borderWidth = 1
-        colorView.layer.borderColor = UIColor.B2?.cgColor
+        colorView.layer.borderColor = UIColor.B1?.cgColor
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
