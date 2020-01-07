@@ -323,40 +323,46 @@ class UserProvider {
                 do {
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    let ongoingOrder = try decoder.decode(WCOrderData.self, from: data)
+                    let ongoingOrder = try decoder.decode(STSuccessParser<[WCOrder]>.self, from: data)
                     
-                    var arr = [WCOrder]()
-                    for orderNotYet in ongoingOrder.data {
-                        guard let data = orderNotYet.details.data(using: .utf8, allowLossyConversion: false) else { return }
-                        
-                        let details = try decoder.decode(WCOrderDetails.self, from: data)
-                        
-                        let order = WCOrder(
-                            id: orderNotYet.id,
-                            number: orderNotYet.number,
-                            time: orderNotYet.time,
-                            status: orderNotYet.status,
-                            details: details,
-                            userId: orderNotYet.userId,
-                            logistics: orderNotYet.logistics,
-                            points: orderNotYet.points,
-                            pointsUsed: orderNotYet.pointsUsed)
-                        arr.append(order)
-                    }
+//                    var arr = [WCOrder]()
+//                    for orderNotYet in ongoingOrder.data {
+//                        guard let data = orderNotYet.details.data(using: .utf8, allowLossyConversion: false) else { return }
+//
+//                        let details = try decoder.decode(WCOrderDetails.self, from: data)
+//
+//                        let order = WCOrder(
+//                            id: orderNotYet.id,
+//                            number: orderNotYet.number,
+//                            time: orderNotYet.time,
+//                            status: orderNotYet.status,
+//                            details: details,
+//                            userId: orderNotYet.userId,
+//                            logistics: orderNotYet.logistics,
+//                            points: orderNotYet.points,
+//                            pointsUsed: orderNotYet.pointsUsed)
+//                        arr.append(order)
+//                    }
 
                     DispatchQueue.main.async {
 
-                        completion(Result.success(arr))
+                        completion(Result.success(ongoingOrder.data))
                     }
 
                 } catch {
 
-                    completion(Result.failure(error))
+                    DispatchQueue.main.async {
+                        
+                        completion(Result.failure(error))
+                    }
                 }
 
             case .failure(let error):
 
-                completion(Result.failure(error))
+                DispatchQueue.main.async {
+                    
+                    completion(Result.failure(error))
+                }
             }
         })
     }
@@ -368,7 +374,7 @@ class UserProvider {
             return completion(Result.failure(STYLiSHSignInError.noToken))
         }
         
-        let request = STUserRequest.ongoingOrder(token)
+        let request = STUserRequest.getOrder(token)
 
         HTTPClient.shared.request(request, completion: { result in
 
@@ -379,40 +385,46 @@ class UserProvider {
                 do {
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
-                    let ongoingOrder = try decoder.decode(WCOrderData.self, from: data)
+                    let order = try decoder.decode(STSuccessParser<[WCOrder]>.self, from: data)
                     
-                    var arr = [WCOrder]()
-                    for orderNotYet in ongoingOrder.data {
-                        guard let data = orderNotYet.details.data(using: .utf8, allowLossyConversion: false) else { return }
-                        
-                        let details = try decoder.decode(WCOrderDetails.self, from: data)
-                        
-                        let order = WCOrder(
-                            id: orderNotYet.id,
-                            number: orderNotYet.number,
-                            time: orderNotYet.time,
-                            status: orderNotYet.status,
-                            details: details,
-                            userId: orderNotYet.userId,
-                            logistics: orderNotYet.logistics,
-                            points: orderNotYet.points,
-                            pointsUsed: orderNotYet.pointsUsed)
-                        arr.append(order)
-                    }
+//                    var arr = [WCOrder]()
+//                    for orderNotYet in ongoingOrder.data {
+//                        guard let data = orderNotYet.details.data(using: .utf8, allowLossyConversion: false) else { return }
+//
+//                        let details = try decoder.decode(WCOrderDetails.self, from: data)
+//
+//                        let order = WCOrder(
+//                            id: orderNotYet.id,
+//                            number: orderNotYet.number,
+//                            time: orderNotYet.time,
+//                            status: orderNotYet.status,
+//                            details: details,
+//                            userId: orderNotYet.userId,
+//                            logistics: orderNotYet.logistics,
+//                            points: orderNotYet.points,
+//                            pointsUsed: orderNotYet.pointsUsed)
+//                        arr.append(order)
+//                    }
 
                     DispatchQueue.main.async {
 
-                        completion(Result.success(arr))
+                        completion(Result.success(order.data))
                     }
 
                 } catch {
 
-                    completion(Result.failure(error))
+                    DispatchQueue.main.async {
+                        
+                        completion(Result.failure(error))
+                    }
                 }
 
             case .failure(let error):
 
-                completion(Result.failure(error))
+                DispatchQueue.main.async {
+                    
+                    completion(Result.failure(error))
+                }
             }
         })
     }

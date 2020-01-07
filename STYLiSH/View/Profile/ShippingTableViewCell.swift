@@ -18,9 +18,33 @@ class ShippingTableViewCell: UITableViewCell {
     
     @IBOutlet weak var statusLabel: UILabel!
     
+    var status: String? {
+        didSet {
+            guard let status = status else { return }
+            switch status {
+            case "pending delivery":
+                statusLabel.layer.borderColor = UIColor.hexStringToUIColor(hex: "A63D40").cgColor
+                statusLabel.textColor = UIColor.hexStringToUIColor(hex: "A63D40")
+                statusLabel.text = "待出貨"
+            case "delivering":
+                statusLabel.layer.borderColor = UIColor.hexStringToUIColor(hex: "90A959").cgColor
+                statusLabel.textColor = UIColor.hexStringToUIColor(hex: "90A959")
+                statusLabel.text = "運送中"
+            case "pending pickup":
+                statusLabel.layer.borderColor = UIColor.hexStringToUIColor(hex: "6494AA").cgColor
+                statusLabel.textColor = UIColor.hexStringToUIColor(hex: "6494AA")
+                statusLabel.text = "待收貨"
+            default:
+                break
+            }
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        statusLabel.layer.borderWidth = 1
+        statusLabel.layer.cornerRadius = 5
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

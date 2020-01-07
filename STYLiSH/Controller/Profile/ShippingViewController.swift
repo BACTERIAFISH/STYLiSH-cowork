@@ -12,11 +12,20 @@ class ShippingViewController: UIViewController {
     
     @IBOutlet weak var shippingTableView: UITableView!
     
+    @IBOutlet weak var nothingLabel: UILabel!
+        
     private let userProvider = UserProvider()
     
     var orders = [WCOrder]() {
         didSet {
-            shippingTableView.reloadData()
+            if orders.isEmpty {
+                shippingTableView.isHidden = true
+                nothingLabel.isHidden = false
+            } else {
+                nothingLabel.isHidden = true
+                shippingTableView.isHidden = false
+                shippingTableView.reloadData()
+            }
         }
     }
 
@@ -38,12 +47,19 @@ class ShippingViewController: UIViewController {
         tabBarController?.tabBar.isHidden = false
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "ShippingDetailSegue", let detailVC = segue.destination as? SHDetailViewController, let indexPath = shippingTableView.indexPathForSelectedRow {
+            detailVC.order = orders[indexPath.row]
+        }
+    }
+    
     func getOrder() {
         userProvider.ongoingOrder { [weak self] result in
             switch result {
             case .success(let wcOrders):
                 self?.orders = wcOrders
             case .failure(let error):
+                self?.orders = []
                 print("ongoing order error: \(error)")
             }
         }
@@ -51,8 +67,8 @@ class ShippingViewController: UIViewController {
     
     func transferDate(second: Int) -> String {
         let formatter = DateFormatter()
-        let date = Date(timeIntervalSince1970: TimeInterval(second))
-        formatter.dateFormat = "yyyy/MM/dd"
+        let date = Date(timeIntervalSince1970: TimeInterval(second/1000))
+        formatter.dateFormat = "yyyy/MM/dd\nhh:mm:ss"
         return formatter.string(from: date)
     }
 }
@@ -68,11 +84,14 @@ extension ShippingViewController: UITableViewDataSource {
         cell.numberLabel.text = orders[indexPath.row].number
         cell.dateLabel.text = transferDate(second: orders[indexPath.row].time)
         cell.priceLabel.text = "NT$ \(orders[indexPath.row].details.total)"
+        cell.status = orders[indexPath.row].logistics
         return cell
     }
     
 }
 
 extension ShippingViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "ShippingDetailSegue", sender: nil)
+    }
 }

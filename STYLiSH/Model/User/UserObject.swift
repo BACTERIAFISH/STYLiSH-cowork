@@ -55,9 +55,9 @@ struct Profile: Codable {
     let points: Int
 }
 
-struct WCOrderData: Codable {
-    let data: [WCOrderNotYet]
-}
+//struct WCOrderData: Codable {
+//    let data: [WCOrderNotYet]
+//}
 
 struct WCOrderNotYet: Codable {
     

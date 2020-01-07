@@ -32,6 +32,8 @@ extension UIColor {
     static let B1 = STColor(.B1)
 
     static let B2 = STColor(.B2)
+    
+    static let B3 = STColor(.B3)
 
     static let B4 = STColor(.B4)
 

@@ -132,6 +132,9 @@
 		CF990CC723C1F31E00CD34C9 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF990CC623C1F31E00CD34C9 /* UserProfileViewController.swift */; };
 		CF990CC923C1FC1C00CD34C9 /* UserProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF990CC823C1FC1C00CD34C9 /* UserProfileTableViewCell.swift */; };
 		CFAECE0D23BF42A500DB1AA8 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFAECE0C23BF42A500DB1AA8 /* UserDataManager.swift */; };
+		CFCA221923C442E00010927B /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCA221823C442E00010927B /* HistoryTableViewCell.swift */; };
+		CFCA221B23C44C340010927B /* SHDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCA221A23C44C340010927B /* SHDetailViewController.swift */; };
+		CFCA221D23C463BC0010927B /* SHDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFCA221C23C463BC0010927B /* SHDetailTableViewCell.swift */; };
 		D306B883B370DFD3ED8ACD74 /* Pods_STYLiSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42C2B4AF3EF2ABFF2BB9F7AB /* Pods_STYLiSH.framework */; };
 /* End PBXBuildFile section */
 
@@ -275,6 +278,9 @@
 		CF990CC623C1F31E00CD34C9 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		CF990CC823C1FC1C00CD34C9 /* UserProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileTableViewCell.swift; sourceTree = "<group>"; };
 		CFAECE0C23BF42A500DB1AA8 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
+		CFCA221823C442E00010927B /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		CFCA221A23C44C340010927B /* SHDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHDetailViewController.swift; sourceTree = "<group>"; };
+		CFCA221C23C463BC0010927B /* SHDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHDetailTableViewCell.swift; sourceTree = "<group>"; };
 		E921004E251C9FC3CBC174F5 /* Pods-STYLiSH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STYLiSH.release.xcconfig"; path = "Target Support Files/Pods-STYLiSH/Pods-STYLiSH.release.xcconfig"; sourceTree = "<group>"; };
 		F551E8F447D7C8DC42B53B98 /* Pods-STYLiSH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STYLiSH.debug.xcconfig"; path = "Target Support Files/Pods-STYLiSH/Pods-STYLiSH.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -358,6 +364,7 @@
 				3C1ACFE322151F50005583E2 /* ProfileViewController.swift */,
 				CF990CC423C1ED2E00CD34C9 /* ShippingViewController.swift */,
 				CF990CC023C1D4C700CD34C9 /* HistoryViewController.swift */,
+				CFCA221A23C44C340010927B /* SHDetailViewController.swift */,
 				CF990CC623C1F31E00CD34C9 /* UserProfileViewController.swift */,
 			);
 			path = Profile;
@@ -369,6 +376,8 @@
 				3C1ACFE822152D29005583E2 /* ProfileCollectionViewCell.swift */,
 				3C1ACFEA22153114005583E2 /* ProfileCollectionReusableView.swift */,
 				CF085B8323C38C3B0063CD3C /* ShippingTableViewCell.swift */,
+				CFCA221823C442E00010927B /* HistoryTableViewCell.swift */,
+				CFCA221C23C463BC0010927B /* SHDetailTableViewCell.swift */,
 				CF990CC823C1FC1C00CD34C9 /* UserProfileTableViewCell.swift */,
 			);
 			path = Profile;
@@ -1003,6 +1012,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CFCA221D23C463BC0010927B /* SHDetailTableViewCell.swift in Sources */,
 				3C0DD87822134EC100F5237E /* UIFont+Extension.swift in Sources */,
 				3CE7A507223042CE009FF003 /* STBaseTextField.swift in Sources */,
 				3CB80E78222FCCC20095F18C /* Bundle+Extension.swift in Sources */,
@@ -1012,6 +1022,7 @@
 				3C6FABF522FD39EB00226316 /* STOrderProductCellViewModel.swift in Sources */,
 				3CED4C0C22141E9700121D4B /* MarketProvider.swift in Sources */,
 				3C831C6022E9945500112298 /* STOrderProductCell.swift in Sources */,
+				CFCA221923C442E00010927B /* HistoryTableViewCell.swift in Sources */,
 				3C1ACFE922152D29005583E2 /* ProfileCollectionViewCell.swift in Sources */,
 				3CB801232229A5290029A552 /* MJRefreshWrapper.swift in Sources */,
 				3C546BE522EABB6D0082C655 /* CheckoutViewController.swift in Sources */,
@@ -1061,6 +1072,7 @@
 				3C9C0D532215400900595689 /* ProfileItem.swift in Sources */,
 				3C9EF5362213C97D00DEE152 /* MarketRequest.swift in Sources */,
 				3CB801252229AEE30029A552 /* UITableView+Extension.swift in Sources */,
+				CFCA221B23C44C340010927B /* SHDetailViewController.swift in Sources */,
 				3CDC5A6A222D860B0071D0D1 /* SizeSelectionCell.swift in Sources */,
 				3C1ACFE622152B1F005583E2 /* UIScreen+Extension.swift in Sources */,
 				3C6020DD222B90DF00312958 /* ProductDetailCell.swift in Sources */,
