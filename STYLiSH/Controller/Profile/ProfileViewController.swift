@@ -179,6 +179,8 @@ extension ProfileViewController: UICollectionViewDelegate {
         } else if indexPath.section == 1 {
             if indexPath.item == 0 {
                 performSegue(withIdentifier: "UserProfileSegue", sender: nil)
+            } else if indexPath.item == 1 {
+                performSegue(withIdentifier: "FavoriteSegue", sender: nil)
             }
         }
     }

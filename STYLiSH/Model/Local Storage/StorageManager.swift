@@ -208,10 +208,25 @@ typealias LSOrderResult = (Result<LSOrder>) -> Void
                         viewContext.delete(favorite)
                     }
                 }
-                completion(Result.success(()))
+                do {
+                    try viewContext.save()
+                    completion(Result.success(()))
+                } catch {
+                    completion(Result.failure(error))
+                }
             case .failure(let error):
                 completion(Result.failure(error))
             }
+        }
+    }
+    
+    func deleteFavorite(favorite: SCFavorite, completion: (Result<Void>) -> Void = { _ in }) {
+        viewContext.delete(favorite)
+        do {
+            try viewContext.save()
+            completion(Result.success(()))
+        } catch {
+            completion(Result.failure(error))
         }
     }
 }

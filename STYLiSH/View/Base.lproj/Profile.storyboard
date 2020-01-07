@@ -155,6 +155,7 @@
                         <segue destination="Mdb-93-oEk" kind="show" identifier="HistorySegue" id="Tcy-6Y-azK"/>
                         <segue destination="KKd-9h-vGI" kind="show" identifier="ShippingSegue" id="JNS-AZ-UH4"/>
                         <segue destination="y0X-xN-uoL" kind="show" identifier="UserProfileSegue" id="8hG-6F-yJL"/>
+                        <segue destination="YaJ-iL-FK8" kind="show" identifier="FavoriteSegue" id="6xX-AC-Set"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zgO-tk-LoJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -309,7 +310,7 @@
             </objects>
             <point key="canvasLocation" x="964" y="900.89955022488766"/>
         </scene>
-        <!--User Profile View Controller-->
+        <!--用戶資訊-->
         <scene sceneID="ahl-yb-Wad">
             <objects>
                 <viewController id="y0X-xN-uoL" customClass="UserProfileViewController" customModule="STYLiSH" customModuleProvider="target" sceneMemberID="viewController">
@@ -409,7 +410,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="h2Q-E1-h64"/>
                     </view>
-                    <navigationItem key="navigationItem" id="L3Z-YJ-dHh"/>
+                    <navigationItem key="navigationItem" title="用戶資訊" id="L3Z-YJ-dHh"/>
                     <connections>
                         <outlet property="nameLabel" destination="waB-yw-LYV" id="V5P-4T-Jtn"/>
                         <outlet property="userImageView" destination="Cpz-cA-Boh" id="hp0-RV-eJk"/>
@@ -419,6 +420,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xCt-oM-FQt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1789.5999999999999" y="900.89955022488766"/>
+        </scene>
+        <!--收藏-->
+        <scene sceneID="MLw-Bv-yDy">
+            <objects>
+                <viewController id="YaJ-iL-FK8" customClass="FavoriteViewController" customModule="STYLiSH" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ptw-8i-ndF">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EzY-op-gdQ">
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="EzY-op-gdQ" firstAttribute="leading" secondItem="LD5-BZ-dtF" secondAttribute="leading" id="gpa-BH-CD2"/>
+                            <constraint firstItem="LD5-BZ-dtF" firstAttribute="bottom" secondItem="EzY-op-gdQ" secondAttribute="bottom" id="l20-Mj-hJV"/>
+                            <constraint firstItem="EzY-op-gdQ" firstAttribute="top" secondItem="LD5-BZ-dtF" secondAttribute="top" id="ojg-KD-fAR"/>
+                            <constraint firstItem="LD5-BZ-dtF" firstAttribute="trailing" secondItem="EzY-op-gdQ" secondAttribute="trailing" id="rUN-1G-oeV"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LD5-BZ-dtF"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="收藏" id="Jbq-c6-r0v"/>
+                    <connections>
+                        <outlet property="favoriteTableView" destination="EzY-op-gdQ" id="VuQ-ZT-Xj7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FDF-Jy-7ZA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2640.8000000000002" y="900.89955022488766"/>
         </scene>
         <!--物流進度-->
         <scene sceneID="NAR-uT-rEV">
