@@ -18,6 +18,8 @@ class SHDetailViewController: UIViewController {
     
     @IBOutlet weak var priceLabel: UILabel!
     
+    @IBOutlet weak var pointsUsedLabel: UILabel!
+    
     @IBOutlet weak var pointsLabel: UILabel!
     
     @IBOutlet weak var listTableView: UITableView!
@@ -35,6 +37,7 @@ class SHDetailViewController: UIViewController {
         timeLabel.text = transferDate(second: order.time)
         paymentLabel.text = order.details.payment == "cash" ? "貨到付款" : "信用卡付款"
         priceLabel.text = "NT$ \(order.details.subtotal)"
+        pointsUsedLabel.text = String(order.pointsUsed)
         pointsLabel.text = String(order.points)
     }
     
@@ -61,6 +64,11 @@ extension SHDetailViewController: UITableViewDataSource {
         guard let order = order, let cell = tableView.dequeueReusableCell(withIdentifier: "SHDetailTableViewCell", for: indexPath) as? SHDetailTableViewCell else { return UITableViewCell() }
         
         cell.list = order.details.list[indexPath.row]
+        if indexPath.row % 2 == 1 {
+            cell.backgroundColor = UIColor.B5
+        } else {
+            cell.backgroundColor = .white
+        }
         return cell
     }
     

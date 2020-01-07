@@ -76,39 +76,39 @@ struct Product: Codable {
         case images
     }
     
-    static func convert(lsProduct: LSProduct) -> Product? {
+    static func convert(scProduct: SCProduct) -> Product? {
         
-        guard let title = lsProduct.title,
-            let description = lsProduct.detail,
-            let texture = lsProduct.texture,
-            let wash = lsProduct.wash,
-            let place = lsProduct.place,
-            let note = lsProduct.note,
-            let story = lsProduct.story,
-            let colors = lsProduct.colors?.allObjects as? [LSColor],
-            let sizes = lsProduct.sizes,
-            let variants = lsProduct.variants?.allObjects as? [LSVariant],
-            let mainImage = lsProduct.mainImage,
-            let images = lsProduct.images else {
+        guard let title = scProduct.title,
+            let description = scProduct.detail,
+            let texture = scProduct.texture,
+            let wash = scProduct.wash,
+            let place = scProduct.place,
+            let note = scProduct.note,
+            let story = scProduct.story,
+            let colors = scProduct.colors?.allObjects as? [SCColor],
+            let sizes = scProduct.sizes,
+            let variants = scProduct.variants?.allObjects as? [SCVariant],
+            let mainImage = scProduct.mainImage,
+            let images = scProduct.images else {
                 return nil
         }
         
         let product = Product(
-            id: Int(lsProduct.id),
+            id: Int(scProduct.id),
             title: title,
             description: description,
-            price: Int(lsProduct.price),
+            price: Int(scProduct.price),
             texture: texture,
             wash: wash,
             place: place,
             note: note,
             story: story,
             colors: colors.map {
-                Color.convert(lsColor: $0)
+                Color.convert(scColor: $0)
             }.compactMap { $0 },
             sizes: sizes,
             variants: variants.map {
-                Variant.convert(lsVariant: $0)
+                Variant.convert(scVariant: $0)
             }.compactMap { $0 },
             mainImage: mainImage,
             images: images)
@@ -123,10 +123,10 @@ struct Color: Codable {
     
     let code: String
     
-    static func convert(lsColor: LSColor) -> Color? {
+    static func convert(scColor: SCColor) -> Color? {
         
-        guard let name = lsColor.name,
-            let code = lsColor.code else { return nil }
+        guard let name = scColor.name,
+            let code = scColor.code else { return nil }
         
         let color = Color(name: name, code: code)
         
@@ -149,15 +149,15 @@ struct Variant: Codable {
         case stock
     }
     
-    static func convert(lsVariant: LSVariant) -> Variant? {
+    static func convert(scVariant: SCVariant) -> Variant? {
         
-        guard let colorCode = lsVariant.colorCode,
-            let size = lsVariant.size else { return nil }
+        guard let colorCode = scVariant.colorCode,
+            let size = scVariant.size else { return nil }
         
         let variant = Variant(
             colorCode: colorCode,
             size: size,
-            stock: Int(lsVariant.stocks)
+            stock: Int(scVariant.stocks)
         )
         
         return variant

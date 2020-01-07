@@ -85,6 +85,12 @@ extension ShippingViewController: UITableViewDataSource {
         cell.dateLabel.text = transferDate(second: orders[indexPath.row].time)
         cell.priceLabel.text = "NT$ \(orders[indexPath.row].details.total)"
         cell.status = orders[indexPath.row].logistics
+        
+        if indexPath.row % 2 == 1 {
+            cell.backgroundColor = UIColor.B5
+        } else {
+            cell.backgroundColor = .white
+        }
         return cell
     }
     

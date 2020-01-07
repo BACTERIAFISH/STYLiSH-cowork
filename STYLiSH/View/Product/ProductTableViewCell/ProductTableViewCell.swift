@@ -18,7 +18,8 @@ class ProductTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        
+        self.selectionStyle = .none
     }
 
     func layoutCell(image: String, title: String, price: Int) {

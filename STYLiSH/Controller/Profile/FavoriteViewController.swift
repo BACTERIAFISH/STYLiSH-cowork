@@ -12,7 +12,19 @@ class FavoriteViewController: UIViewController {
     
     @IBOutlet weak var favoriteTableView: UITableView!
     
-    var favorites = [SCFavorite]()
+    @IBOutlet weak var nothingLabel: UILabel!
+    
+    var favorites = [SCFavorite]() {
+        didSet {
+            if favorites.isEmpty {
+                nothingLabel.isHidden = false
+                favoriteTableView.isHidden = true
+            } else {
+                nothingLabel.isHidden = true
+                favoriteTableView.isHidden = false
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +60,19 @@ class FavoriteViewController: UIViewController {
             }
         }
     }
+    
+    func showProductDetailViewController(product: Product) {
+
+        let productDetailVC = UIStoryboard.product.instantiateViewController(withIdentifier:
+            String(describing: ProductDetailViewController.self)
+        )
+
+        guard let detailVC = productDetailVC as? ProductDetailViewController else { return }
+
+        detailVC.product = product
+
+        show(detailVC, sender: nil)
+    }
 }
 
 extension FavoriteViewController: UITableViewDataSource {
@@ -64,8 +89,8 @@ extension FavoriteViewController: UITableViewDataSource {
 
         guard
             let productCell = cell as? ProductTableViewCell,
-            let lsProduct = favorites[indexPath.row].product,
-            let product = Product.convert(lsProduct: lsProduct)
+            let scProduct = favorites[indexPath.row].product,
+            let product = Product.convert(scProduct: scProduct)
         else {
             return cell
         }
@@ -96,5 +121,14 @@ extension FavoriteViewController: UITableViewDelegate {
                 }
             }
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard
+            let scProduct = favorites[indexPath.row].product,
+            let product = Product.convert(scProduct: scProduct)
+        else { return }
+        
+        showProductDetailViewController(product: product)
     }
 }

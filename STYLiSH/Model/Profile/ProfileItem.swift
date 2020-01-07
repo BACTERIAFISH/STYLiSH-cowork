@@ -138,7 +138,7 @@ enum ServiceItem: ProfileItem {
 
         case .refund: return NSLocalizedString("帳戶退款")
 
-        case .address: return NSLocalizedString("地址")
+        case .address: return NSLocalizedString("店舖位置")
 
         case .customService: return NSLocalizedString("客服訊息")
 

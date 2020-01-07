@@ -28,7 +28,7 @@ class ProfileManager {
         items: [
             ServiceItem.setting,
             ServiceItem.collcetion,
-            ServiceItem.notification,
+            //ServiceItem.notification,
             //ServiceItem.refund,
             ServiceItem.address,
             ServiceItem.customService

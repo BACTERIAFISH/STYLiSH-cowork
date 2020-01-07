@@ -84,6 +84,11 @@ extension HistoryViewController: UITableViewDataSource {
         cell.numberLabel.text = orders[indexPath.row].number
         cell.dateLabel.text = transferDate(second: orders[indexPath.row].time)
         cell.priceLabel.text = "NT$ \(orders[indexPath.row].details.total)"
+        if indexPath.row % 2 == 1 {
+            cell.backgroundColor = UIColor.B5
+        } else {
+            cell.backgroundColor = .white
+        }
         return cell
     }
     

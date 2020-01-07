@@ -159,14 +159,14 @@ typealias LSOrderResult = (Result<LSOrder>) -> Void
     func saveFavorite(id: Int, product: Product, completion: (Result<Void>) -> Void = { _ in }) {
         
         let favorite = SCFavorite(context: viewContext)
+        
+        let scProduct = SCProduct(context: viewContext)
 
-        let lsProduct = LSProduct(context: viewContext)
-
-        lsProduct.mapping(product)
+        scProduct.mapping(product)
         
         favorite.id = id.int64()
 
-        favorite.product = lsProduct
+        favorite.product = scProduct
 
         favorite.createTime = Int(Date().timeIntervalSince1970).int64()
 
@@ -297,6 +297,82 @@ private extension LSColor {
 }
 
 private extension LSVariant {
+
+    func mapping(_ object: Variant) {
+
+        colorCode = object.colorCode
+
+        size = object.size
+
+        stocks = object.stock.int64()
+    }
+}
+
+private extension SCProduct {
+
+    func mapping(_ object: Product) {
+
+        detail = object.description
+
+        id = object.id.int64()
+
+        images = object.images
+
+        mainImage = object.mainImage
+
+        note = object.note
+
+        place = object.note
+
+        price = object.price.int64()
+
+        sizes = object.sizes
+
+        story = object.story
+
+        texture = object.texture
+
+        title = object.title
+
+        wash = object.wash
+
+        colors = NSSet(array:
+
+            object.colors.map({ color in
+
+                let scColor = SCColor(context: StorageManager.shared.viewContext)
+
+                scColor.mapping(color)
+
+                return scColor
+            })
+        )
+
+        variants = NSSet(array:
+
+            object.variants.map({ variant in
+
+                let scVariant = SCVariant(context: StorageManager.shared.viewContext)
+
+                scVariant.mapping(variant)
+
+                return scVariant
+            })
+        )
+    }
+}
+
+private extension SCColor {
+
+    func mapping(_ object: Color) {
+
+        code = object.code
+
+        name = object.name
+    }
+}
+
+private extension SCVariant {
 
     func mapping(_ object: Variant) {
 
