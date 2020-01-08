@@ -89,8 +89,7 @@ extension FavoriteViewController: UITableViewDataSource {
 
         guard
             let productCell = cell as? ProductTableViewCell,
-            let scProduct = favorites[indexPath.row].product,
-            let product = Product.convert(scProduct: scProduct)
+            let product = Product.convert(scFavorite: favorites[indexPath.row])
         else {
             return cell
         }
@@ -124,10 +123,7 @@ extension FavoriteViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard
-            let scProduct = favorites[indexPath.row].product,
-            let product = Product.convert(scProduct: scProduct)
-        else { return }
+        guard let product = Product.convert(scFavorite: favorites[indexPath.row]) else { return }
         
         showProductDetailViewController(product: product)
     }

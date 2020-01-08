@@ -39,14 +39,10 @@
     <entity name="SCColor" representedClassName="SCColor" syncable="YES" codeGenerationType="class">
         <attribute name="code" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
-        <relationship name="product" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="SCProduct" inverseName="colors" inverseEntity="SCProduct"/>
+        <relationship name="product" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="SCFavorite" inverseName="colors" inverseEntity="SCFavorite"/>
     </entity>
     <entity name="SCFavorite" representedClassName="SCFavorite" syncable="YES" codeGenerationType="class">
         <attribute name="createTime" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SCProduct" inverseName="favorite" inverseEntity="SCProduct"/>
-    </entity>
-    <entity name="SCProduct" representedClassName="SCProduct" syncable="YES" codeGenerationType="class">
         <attribute name="detail" attributeType="String"/>
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="images" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromData" customClassName="[String]"/>
@@ -60,14 +56,13 @@
         <attribute name="title" attributeType="String"/>
         <attribute name="wash" attributeType="String"/>
         <relationship name="colors" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="SCColor" inverseName="product" inverseEntity="SCColor"/>
-        <relationship name="favorite" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="SCFavorite" inverseName="product" inverseEntity="SCFavorite"/>
         <relationship name="variants" optional="YES" toMany="YES" deletionRule="No Action" destinationEntity="SCVariant" inverseName="product" inverseEntity="SCVariant"/>
     </entity>
     <entity name="SCVariant" representedClassName="SCVariant" syncable="YES" codeGenerationType="class">
         <attribute name="colorCode" attributeType="String"/>
         <attribute name="size" attributeType="String"/>
         <attribute name="stocks" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="product" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="SCProduct" inverseName="variants" inverseEntity="SCProduct"/>
+        <relationship name="product" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="SCFavorite" inverseName="variants" inverseEntity="SCFavorite"/>
     </entity>
     <elements>
         <element name="LSColor" positionX="-36" positionY="72" width="128" height="90"/>
@@ -75,8 +70,7 @@
         <element name="LSProduct" positionX="-63" positionY="-18" width="128" height="268"/>
         <element name="LSVariant" positionX="-18" positionY="99" width="128" height="105"/>
         <element name="SCColor" positionX="-36" positionY="144" width="128" height="88"/>
-        <element name="SCFavorite" positionX="-45" positionY="99" width="128" height="88"/>
-        <element name="SCProduct" positionX="-45" positionY="108" width="128" height="268"/>
+        <element name="SCFavorite" positionX="-45" positionY="108" width="128" height="268"/>
         <element name="SCVariant" positionX="-27" positionY="153" width="128" height="103"/>
     </elements>
 </model>

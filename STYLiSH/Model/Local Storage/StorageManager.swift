@@ -159,14 +159,8 @@ typealias LSOrderResult = (Result<LSOrder>) -> Void
     func saveFavorite(id: Int, product: Product, completion: (Result<Void>) -> Void = { _ in }) {
         
         let favorite = SCFavorite(context: viewContext)
-        
-        let scProduct = SCProduct(context: viewContext)
 
-        scProduct.mapping(product)
-        
-        favorite.id = id.int64()
-
-        favorite.product = scProduct
+        favorite.mapping(product)
 
         favorite.createTime = Int(Date().timeIntervalSince1970).int64()
 
@@ -308,7 +302,7 @@ private extension LSVariant {
     }
 }
 
-private extension SCProduct {
+private extension SCFavorite {
 
     func mapping(_ object: Product) {
 

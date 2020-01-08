@@ -49,7 +49,7 @@ class SHDetailViewController: UIViewController {
     func transferDate(second: Int) -> String {
         let formatter = DateFormatter()
         let date = Date(timeIntervalSince1970: TimeInterval(second/1000))
-        formatter.dateFormat = "yyyy/MM/dd\nhh:mm:ss"
+        formatter.dateFormat = "yyyy/MM/dd hh:mm:ss"
         return formatter.string(from: date)
     }
 

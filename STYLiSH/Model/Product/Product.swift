@@ -76,28 +76,28 @@ struct Product: Codable {
         case images
     }
     
-    static func convert(scProduct: SCProduct) -> Product? {
+    static func convert(scFavorite: SCFavorite) -> Product? {
         
-        guard let title = scProduct.title,
-            let description = scProduct.detail,
-            let texture = scProduct.texture,
-            let wash = scProduct.wash,
-            let place = scProduct.place,
-            let note = scProduct.note,
-            let story = scProduct.story,
-            let colors = scProduct.colors?.allObjects as? [SCColor],
-            let sizes = scProduct.sizes,
-            let variants = scProduct.variants?.allObjects as? [SCVariant],
-            let mainImage = scProduct.mainImage,
-            let images = scProduct.images else {
+        guard let title = scFavorite.title,
+            let description = scFavorite.detail,
+            let texture = scFavorite.texture,
+            let wash = scFavorite.wash,
+            let place = scFavorite.place,
+            let note = scFavorite.note,
+            let story = scFavorite.story,
+            let colors = scFavorite.colors?.allObjects as? [SCColor],
+            let sizes = scFavorite.sizes,
+            let variants = scFavorite.variants?.allObjects as? [SCVariant],
+            let mainImage = scFavorite.mainImage,
+            let images = scFavorite.images else {
                 return nil
         }
         
         let product = Product(
-            id: Int(scProduct.id),
+            id: Int(scFavorite.id),
             title: title,
             description: description,
-            price: Int(scProduct.price),
+            price: Int(scFavorite.price),
             texture: texture,
             wash: wash,
             place: place,
