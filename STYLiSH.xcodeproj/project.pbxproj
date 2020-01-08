@@ -132,6 +132,8 @@
 		CF257F8323C5B65F00B59F5A /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFE6B8A23C1BB2000B70540 /* ColorCollectionViewCell.swift */; };
 		CF257F8423C5B66200B59F5A /* FilterManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C599B3223C2E6C200D0EDC4 /* FilterManagerDelegate.swift */; };
 		CF257F8523C5B66500B59F5A /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFE6B8E23C1EBB500B70540 /* FilterTableViewCell.swift */; };
+		CF38205123C5E1B200751E47 /* ChatServerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF38205023C5E1B200751E47 /* ChatServerTableViewCell.swift */; };
+		CF38205323C5FF9600751E47 /* ChatClientTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF38205223C5FF9600751E47 /* ChatClientTableViewCell.swift */; };
 		CF990CBB23C00FD800CD34C9 /* NewUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF990CBA23C00FD800CD34C9 /* NewUserRequest.swift */; };
 		CF990CBD23C010D900CD34C9 /* NewHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF990CBC23C010D900CD34C9 /* NewHTTPClient.swift */; };
 		CF990CBF23C02C0800CD34C9 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF990CBE23C02C0800CD34C9 /* SignupViewController.swift */; };
@@ -286,6 +288,8 @@
 		CF02B37F23C4A6D1000E2445 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		CF07887B23C5987E0048BF75 /* ClientServiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientServiceViewController.swift; sourceTree = "<group>"; };
 		CF085B8323C38C3B0063CD3C /* ShippingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShippingTableViewCell.swift; sourceTree = "<group>"; };
+		CF38205023C5E1B200751E47 /* ChatServerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatServerTableViewCell.swift; sourceTree = "<group>"; };
+		CF38205223C5FF9600751E47 /* ChatClientTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatClientTableViewCell.swift; sourceTree = "<group>"; };
 		CF990CBA23C00FD800CD34C9 /* NewUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewUserRequest.swift; sourceTree = "<group>"; };
 		CF990CBC23C010D900CD34C9 /* NewHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewHTTPClient.swift; sourceTree = "<group>"; };
 		CF990CBE23C02C0800CD34C9 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
@@ -383,6 +387,7 @@
 				CFCA221A23C44C340010927B /* SHDetailViewController.swift */,
 				CF990CC623C1F31E00CD34C9 /* UserProfileViewController.swift */,
 				CF02B37F23C4A6D1000E2445 /* FavoriteViewController.swift */,
+				CF07887B23C5987E0048BF75 /* ClientServiceViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -396,7 +401,8 @@
 				CFCA221823C442E00010927B /* HistoryTableViewCell.swift */,
 				CFCA221C23C463BC0010927B /* SHDetailTableViewCell.swift */,
 				CF990CC823C1FC1C00CD34C9 /* UserProfileTableViewCell.swift */,
-				CF07887B23C5987E0048BF75 /* ClientServiceViewController.swift */,
+				CF38205023C5E1B200751E47 /* ChatServerTableViewCell.swift */,
+				CF38205223C5FF9600751E47 /* ChatClientTableViewCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1103,10 +1109,12 @@
 				3CA25519222A484300B286F6 /* ProductsListProvider.swift in Sources */,
 				3C3369162227CE7D008A5A7A /* TrolleyProductBaseView.swift in Sources */,
 				3CE7A50222302354009FF003 /* ProductContentCategory.swift in Sources */,
+				CF38205323C5FF9600751E47 /* ChatClientTableViewCell.swift in Sources */,
 				3C6020E8222BBA3C00312958 /* ProductBasicCell.swift in Sources */,
 				CF257F8523C5B66500B59F5A /* FilterTableViewCell.swift in Sources */,
 				3CE7A51522305E5A009FF003 /* KeyChainManager.swift in Sources */,
 				3C1ACFEB22153114005583E2 /* ProfileCollectionReusableView.swift in Sources */,
+				CF38205123C5E1B200751E47 /* ChatServerTableViewCell.swift in Sources */,
 				3C9C0D532215400900595689 /* ProfileItem.swift in Sources */,
 				3C9EF5362213C97D00DEE152 /* MarketRequest.swift in Sources */,
 				3CB801252229AEE30029A552 /* UITableView+Extension.swift in Sources */,
