@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
     -> Bool {
-
+        
         TPDSetup.setWithAppId(
             Bundle.STValueForInt32(key: STConstant.tapPayAppID),
             withAppKey: Bundle.STValueForString(key: STConstant.tapPayAppKey),
