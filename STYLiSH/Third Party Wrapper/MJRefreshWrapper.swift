@@ -18,12 +18,12 @@ extension UITableView {
 
     func endHeaderRefreshing() {
 
-        mj_header.endRefreshing()
+        mj_header?.endRefreshing()
     }
 
     func beginHeaderRefreshing() {
 
-        mj_header.beginRefreshing()
+        mj_header?.beginRefreshing()
     }
 
     func addRefreshFooter(refreshingBlock: @escaping () -> Void) {
@@ -33,17 +33,17 @@ extension UITableView {
 
     func endFooterRefreshing() {
 
-        mj_footer.endRefreshing()
+        mj_footer?.endRefreshing()
     }
 
     func endWithNoMoreData() {
 
-        mj_footer.endRefreshingWithNoMoreData()
+        mj_footer?.endRefreshingWithNoMoreData()
     }
 
     func resetNoMoreData() {
 
-        mj_footer.resetNoMoreData()
+        mj_footer?.resetNoMoreData()
     }
 }
 
@@ -56,12 +56,12 @@ extension UICollectionView {
 
     func endHeaderRefreshing() {
 
-        mj_header.endRefreshing()
+        mj_header?.endRefreshing()
     }
 
     func beginHeaderRefreshing() {
 
-        mj_header.beginRefreshing()
+        mj_header?.beginRefreshing()
     }
 
     func addRefreshFooter(refreshingBlock: @escaping () -> Void) {
@@ -71,16 +71,16 @@ extension UICollectionView {
 
     func endFooterRefreshing() {
 
-        mj_footer.endRefreshing()
+        mj_footer?.endRefreshing()
     }
 
     func endWithNoMoreData() {
 
-        mj_footer.endRefreshingWithNoMoreData()
+        mj_footer?.endRefreshingWithNoMoreData()
     }
 
     func resetNoMoreData() {
 
-        mj_footer.resetNoMoreData()
+        mj_footer?.resetNoMoreData()
     }
 }
