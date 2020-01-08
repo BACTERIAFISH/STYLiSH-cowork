@@ -80,8 +80,8 @@ private enum Tab {
         case .filter:
             return UITabBarItem(
                 title: nil,
-                image: UIImage(systemName: "magnifyingglass.circle"),
-                selectedImage: UIImage(systemName: "magnifyingglass.circle.fill")
+                image: UIImage.asset(.icons8_search_36),
+                selectedImage: UIImage.asset(.icons8_search_fill_36)
             )
         }
     }

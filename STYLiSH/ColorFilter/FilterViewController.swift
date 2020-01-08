@@ -34,8 +34,9 @@ class FilterViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBOutlet var filterTableView: UITableView!
     
-    @IBAction func filterbutton(_ sender: Any) {
-
+    @IBAction func showAll(_ sender: Any) {
+        result = productItem
+        filterTableView.reloadData()
     }
     
     var productItem: [Product1] = [] {
