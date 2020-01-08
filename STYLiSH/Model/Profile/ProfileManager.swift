@@ -30,8 +30,8 @@ class ProfileManager {
             ServiceItem.collcetion,
             //ServiceItem.notification,
             //ServiceItem.refund,
-            ServiceItem.address,
-            ServiceItem.customService
+            ServiceItem.customService,
+            ServiceItem.address
             //ServiceItem.systomReport,
             //ServiceItem.bindPhone,
         ]

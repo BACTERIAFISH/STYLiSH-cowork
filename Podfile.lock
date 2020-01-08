@@ -29,6 +29,7 @@ PODS:
   - KeychainAccess (3.2.0)
   - Kingfisher (5.4.0)
   - MJRefresh (3.2.0)
+  - Starscream (3.1.1)
   - SwiftLint (0.34.0)
 
 DEPENDENCIES:
@@ -39,6 +40,7 @@ DEPENDENCIES:
   - KeychainAccess
   - Kingfisher
   - MJRefresh
+  - Starscream
   - SwiftLint
 
 SPEC REPOS:
@@ -54,6 +56,7 @@ SPEC REPOS:
     - KeychainAccess
     - Kingfisher
     - MJRefresh
+    - Starscream
     - SwiftLint
 
 SPEC CHECKSUMS:
@@ -68,8 +71,9 @@ SPEC CHECKSUMS:
   KeychainAccess: 3b1bf8a77eb4c6ea1ce9404c292e48f948954c6b
   Kingfisher: 9c8f2cc6710334e06f32ba2b45e77707d5e2f0c9
   MJRefresh: ed450d6eb9d3346a2cb033ab7eb6de090aeef437
+  Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   SwiftLint: 79d48a17c6565dc286c37efb8322c7b450f95c67
 
-PODFILE CHECKSUM: 177f4616ff0bc250f4be453d2c28cfb358559f46
+PODFILE CHECKSUM: 022cddedda712272f0423d628216da26f6f30f0f
 
 COCOAPODS: 1.8.4

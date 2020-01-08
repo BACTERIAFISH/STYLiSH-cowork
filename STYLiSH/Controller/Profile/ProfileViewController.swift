@@ -177,10 +177,15 @@ extension ProfileViewController: UICollectionViewDelegate {
             }
             
         } else if indexPath.section == 1 {
-            if indexPath.item == 0 {
+            switch indexPath.item {
+            case 0:
                 performSegue(withIdentifier: "UserProfileSegue", sender: nil)
-            } else if indexPath.item == 1 {
+            case 1:
                 performSegue(withIdentifier: "FavoriteSegue", sender: nil)
+            case 2:
+                performSegue(withIdentifier: "ClientServiceSegue", sender: nil)
+            default:
+                break
             }
         }
     }

@@ -156,11 +156,47 @@
                         <segue destination="KKd-9h-vGI" kind="show" identifier="ShippingSegue" id="JNS-AZ-UH4"/>
                         <segue destination="y0X-xN-uoL" kind="show" identifier="UserProfileSegue" id="8hG-6F-yJL"/>
                         <segue destination="YaJ-iL-FK8" kind="show" identifier="FavoriteSegue" id="6xX-AC-Set"/>
+                        <segue destination="pyH-z4-rbT" kind="show" identifier="ClientServiceSegue" id="8T9-A0-Uhl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zgO-tk-LoJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="964" y="144.3778110944528"/>
+        </scene>
+        <!--Client Service View Controller-->
+        <scene sceneID="IIv-h0-dWV">
+            <objects>
+                <viewController id="pyH-z4-rbT" customClass="ClientServiceViewController" customModule="STYLiSH" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="LHm-Br-Qsl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P0o-y3-mRh">
+                                <rect key="frame" x="16" y="541" width="254" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sf5-rd-Piw">
+                                <rect key="frame" x="300" y="543" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="send:" destination="pyH-z4-rbT" eventType="touchUpInside" id="Cfx-S6-aEH"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="Eyr-8m-SLd"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="2mf-dI-bmT"/>
+                    <connections>
+                        <outlet property="inputTextField" destination="P0o-y3-mRh" id="5X6-7s-gWe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vxc-LY-AeA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1789.5999999999999" y="143.47826086956522"/>
         </scene>
         <!--歷史訂單-->
         <scene sceneID="TZY-hU-kBu">

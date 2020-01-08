@@ -16,5 +16,6 @@ target 'STYLiSH' do
   pod 'FBSDKLoginKit'
   pod 'SwiftLint'
   pod 'GoogleSignIn'
+  pod 'Starscream'
 
 end
