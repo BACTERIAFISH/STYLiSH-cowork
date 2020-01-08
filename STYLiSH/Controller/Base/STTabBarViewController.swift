@@ -17,6 +17,8 @@ private enum Tab {
     case profile
 
     case trolley
+    
+    case filter
 
     func controller() -> UIViewController {
 
@@ -31,6 +33,8 @@ private enum Tab {
         case .profile: controller = UIStoryboard.profile.instantiateInitialViewController()!
 
         case .trolley: controller = UIStoryboard.trolley.instantiateInitialViewController()!
+            
+        case .filter: controller = UIStoryboard.filter.instantiateInitialViewController()!
 
         }
 
@@ -72,13 +76,20 @@ private enum Tab {
                 image: UIImage.asset(.Icons_36px_Profile_Normal),
                 selectedImage: UIImage.asset(.Icons_36px_Profile_Selected)
             )
+            
+        case .filter:
+            return UITabBarItem(
+                title: nil,
+                image: UIImage(systemName: "magnifyingglass.circle"),
+                selectedImage: UIImage(systemName: "magnifyingglass.circle.fill")
+            )
         }
     }
 }
 
 class STTabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
-    private let tabs: [Tab] = [.lobby, .product, .trolley, .profile]
+    private let tabs: [Tab] = [.lobby, .product, .filter, .trolley, .profile]
     
     var trolleyTabBarItem: UITabBarItem!
     

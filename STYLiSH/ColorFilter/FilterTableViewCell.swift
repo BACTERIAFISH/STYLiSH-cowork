@@ -10,7 +10,6 @@ import UIKit
 
 class FilterTableViewCell: UITableViewCell {
 
-   
     @IBOutlet var catalogPrice: UILabel!
     @IBOutlet var catalogTitle: UILabel!
     @IBOutlet var catalogImageView: UIImageView!

@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 protocol ColorViewControllerDelegate: AnyObject {
     func receiveData( data: String)
 }

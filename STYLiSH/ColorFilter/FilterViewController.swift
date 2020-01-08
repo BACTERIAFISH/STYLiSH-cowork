@@ -8,11 +8,10 @@
 
 import UIKit
 
-class FilterViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,ColorViewControllerDelegate {
+class FilterViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ColorViewControllerDelegate {
     
     //儲存filter的結果
     var result: [Product1] = []
-    
     func receiveData(data: String) {
         //清空上一次filter的結果
         result = []
@@ -39,7 +38,11 @@ class FilterViewController: UIViewController,UITableViewDelegate,UITableViewData
 
     }
     
-    var productItem : [Product1] = []
+    var productItem: [Product1] = [] {
+        didSet {
+            result = productItem
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
