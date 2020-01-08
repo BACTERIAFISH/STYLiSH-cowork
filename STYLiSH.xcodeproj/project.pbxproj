@@ -123,6 +123,12 @@
 		3CED80AE23012CE400B7DA8E /* NSLocalizedString+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CED80AD23012CE400B7DA8E /* NSLocalizedString+Extension.swift */; };
 		3CED80AF2301301300B7DA8E /* Trolley.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3CED80B12301301300B7DA8E /* Trolley.storyboard */; };
 		3CFAC67322EEF71C00785FAB /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3CFAC67222EEF71C00785FAB /* String+Extension.swift */; };
+		5C599B3323C2E6C200D0EDC4 /* FilterManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C599B3223C2E6C200D0EDC4 /* FilterManagerDelegate.swift */; };
+		5CFE6B8223C1B16B00B70540 /* ColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFE6B8123C1B16B00B70540 /* ColorViewController.swift */; };
+		5CFE6B8923C1B30000B70540 /* Color.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CFE6B8823C1B30000B70540 /* Color.storyboard */; };
+		5CFE6B8B23C1BB2000B70540 /* ColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFE6B8A23C1BB2000B70540 /* ColorCollectionViewCell.swift */; };
+		5CFE6B8D23C1E7E600B70540 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFE6B8C23C1E7E600B70540 /* FilterViewController.swift */; };
+		5CFE6B8F23C1EBB500B70540 /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFE6B8E23C1EBB500B70540 /* FilterTableViewCell.swift */; };
 		D306B883B370DFD3ED8ACD74 /* Pods_STYLiSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42C2B4AF3EF2ABFF2BB9F7AB /* Pods_STYLiSH.framework */; };
 /* End PBXBuildFile section */
 
@@ -257,6 +263,12 @@
 		3CED80B52301301800B7DA8E /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Trolley.strings"; sourceTree = "<group>"; };
 		3CFAC67222EEF71C00785FAB /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		42C2B4AF3EF2ABFF2BB9F7AB /* Pods_STYLiSH.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_STYLiSH.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C599B3223C2E6C200D0EDC4 /* FilterManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterManagerDelegate.swift; sourceTree = "<group>"; };
+		5CFE6B8123C1B16B00B70540 /* ColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorViewController.swift; sourceTree = "<group>"; };
+		5CFE6B8823C1B30000B70540 /* Color.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Color.storyboard; sourceTree = "<group>"; };
+		5CFE6B8A23C1BB2000B70540 /* ColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorCollectionViewCell.swift; sourceTree = "<group>"; };
+		5CFE6B8C23C1E7E600B70540 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		5CFE6B8E23C1EBB500B70540 /* FilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTableViewCell.swift; sourceTree = "<group>"; };
 		E921004E251C9FC3CBC174F5 /* Pods-STYLiSH.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STYLiSH.release.xcconfig"; path = "Target Support Files/Pods-STYLiSH/Pods-STYLiSH.release.xcconfig"; sourceTree = "<group>"; };
 		F551E8F447D7C8DC42B53B98 /* Pods-STYLiSH.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-STYLiSH.debug.xcconfig"; path = "Target Support Files/Pods-STYLiSH/Pods-STYLiSH.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -601,6 +613,11 @@
 				3CD2912E22113CE4008B8A2D /* View */,
 				3CD2911C221135E2008B8A2D /* AppDelegate.swift */,
 				3CD29128221135E3008B8A2D /* Info.plist */,
+				5CFE6B8123C1B16B00B70540 /* ColorViewController.swift */,
+				5CFE6B8C23C1E7E600B70540 /* FilterViewController.swift */,
+				5C599B3223C2E6C200D0EDC4 /* FilterManagerDelegate.swift */,
+				5CFE6B8A23C1BB2000B70540 /* ColorCollectionViewCell.swift */,
+				5CFE6B8E23C1EBB500B70540 /* FilterTableViewCell.swift */,
 			);
 			path = STYLiSH;
 			sourceTree = "<group>";
@@ -620,6 +637,7 @@
 				3CD29120221135E2008B8A2D /* Main.storyboard */,
 				3CED80A82301256200B7DA8E /* Profile.storyboard */,
 				3CED80B12301301300B7DA8E /* Trolley.storyboard */,
+				5CFE6B8823C1B30000B70540 /* Color.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -871,6 +889,7 @@
 				3C831C6122E9945500112298 /* STOrderProductCell.xib in Resources */,
 				3C4B10D522292732009942B7 /* card_unknown@2x.png in Resources */,
 				3C4B10CF22292732009942B7 /* card_visa.png in Resources */,
+				5CFE6B8923C1B30000B70540 /* Color.storyboard in Resources */,
 				3CED808C2301138800B7DA8E /* Localizable.strings in Resources */,
 				3C09F5122211435B00C5B3E2 /* Lobby.storyboard in Resources */,
 				3CED80AF2301301300B7DA8E /* Trolley.storyboard in Resources */,
@@ -962,6 +981,7 @@
 				3CE7A507223042CE009FF003 /* STBaseTextField.swift in Sources */,
 				3CB80E78222FCCC20095F18C /* Bundle+Extension.swift in Sources */,
 				3CE7A519223064C7009FF003 /* UserObject.swift in Sources */,
+				5CFE6B8B23C1BB2000B70540 /* ColorCollectionViewCell.swift in Sources */,
 				3CB801272229AFF10029A552 /* UICollectionView+Extension.swift in Sources */,
 				3C8F191B22E5BA9F00EECE90 /* LobbyView.swift in Sources */,
 				3C6FABF522FD39EB00226316 /* STOrderProductCellViewModel.swift in Sources */,
@@ -973,9 +993,11 @@
 				3CD2911D221135E2008B8A2D /* AppDelegate.swift in Sources */,
 				3CEBE07A222F72600064EF82 /* STYLiSH.xcdatamodeld in Sources */,
 				3CDC5A66222D85990071D0D1 /* ColorSelectionCell.swift in Sources */,
+				5CFE6B8F23C1EBB500B70540 /* FilterTableViewCell.swift in Sources */,
 				3C6020D8222B883600312958 /* ProductDescriptionTableViewCell.swift in Sources */,
 				3C0DD876221348E900F5237E /* LobbyViewController.swift in Sources */,
 				3C33691F2227DC7B008A5A7A /* TrolleySelectionView.swift in Sources */,
+				5CFE6B8223C1B16B00B70540 /* ColorViewController.swift in Sources */,
 				3C831C6422E9AF8F00112298 /* STOrderUserInputCell.swift in Sources */,
 				3C4B10E222292EBB009942B7 /* STTapPayViewController.swift in Sources */,
 				3C831C8A22EAAF7A00112298 /* STPaymentInfoTableViewCell.swift in Sources */,
@@ -1021,6 +1043,7 @@
 				3C8F191922E5997B00EECE90 /* LobbyTableViewHeaderView.swift in Sources */,
 				3CE7A517223061A9009FF003 /* UserRequest.swift in Sources */,
 				3C09F52122115AB700C5B3E2 /* UIImage+Extension.swift in Sources */,
+				5C599B3323C2E6C200D0EDC4 /* FilterManagerDelegate.swift in Sources */,
 				3C6B8FE8222CE53100804EFE /* BasicSelectionCell.swift in Sources */,
 				3C41B8472216667000112F94 /* ProductViewController.swift in Sources */,
 				3CE7A51322305916009FF003 /* UserProvider.swift in Sources */,
@@ -1028,6 +1051,7 @@
 				3CD9BB35223B882C0012C00D /* AuthViewController.swift in Sources */,
 				3CB801212229A0970029A552 /* KingFisherWrapper.swift in Sources */,
 				3CFAC67322EEF71C00785FAB /* String+Extension.swift in Sources */,
+				5CFE6B8D23C1E7E600B70540 /* FilterViewController.swift in Sources */,
 				3C33863F221BB2B800ED97E4 /* ProductListViewController.swift in Sources */,
 				3C6020E6222BB03400312958 /* STBaseViewController.swift in Sources */,
 				3CEBE07E222F979F0064EF82 /* JGProgressHUDWrapper.swift in Sources */,
