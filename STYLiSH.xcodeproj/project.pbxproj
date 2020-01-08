@@ -613,11 +613,7 @@
 				3CD2912E22113CE4008B8A2D /* View */,
 				3CD2911C221135E2008B8A2D /* AppDelegate.swift */,
 				3CD29128221135E3008B8A2D /* Info.plist */,
-				5CFE6B8123C1B16B00B70540 /* ColorViewController.swift */,
-				5CFE6B8C23C1E7E600B70540 /* FilterViewController.swift */,
-				5C599B3223C2E6C200D0EDC4 /* FilterManagerDelegate.swift */,
-				5CFE6B8A23C1BB2000B70540 /* ColorCollectionViewCell.swift */,
-				5CFE6B8E23C1EBB500B70540 /* FilterTableViewCell.swift */,
+				CF07887D23C5AD740048BF75 /* ColorFilter */,
 			);
 			path = STYLiSH;
 			sourceTree = "<group>";
@@ -637,7 +633,6 @@
 				3CD29120221135E2008B8A2D /* Main.storyboard */,
 				3CED80A82301256200B7DA8E /* Profile.storyboard */,
 				3CED80B12301301300B7DA8E /* Trolley.storyboard */,
-				5CFE6B8823C1B30000B70540 /* Color.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -794,6 +789,19 @@
 				3CED4C0E2214222A00121D4B /* STParser.swift */,
 			);
 			path = Parser;
+			sourceTree = "<group>";
+		};
+		CF07887D23C5AD740048BF75 /* ColorFilter */ = {
+			isa = PBXGroup;
+			children = (
+				5CFE6B8823C1B30000B70540 /* Color.storyboard */,
+				5CFE6B8123C1B16B00B70540 /* ColorViewController.swift */,
+				5CFE6B8C23C1E7E600B70540 /* FilterViewController.swift */,
+				5C599B3223C2E6C200D0EDC4 /* FilterManagerDelegate.swift */,
+				5CFE6B8A23C1BB2000B70540 /* ColorCollectionViewCell.swift */,
+				5CFE6B8E23C1EBB500B70540 /* FilterTableViewCell.swift */,
+			);
+			path = ColorFilter;
 			sourceTree = "<group>";
 		};
 		F26A8A19BFED7C956C38BFE8 /* Frameworks */ = {
