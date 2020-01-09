@@ -21,7 +21,12 @@ class ChatServerTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        serverImageView.layer.cornerRadius = 18
+        serverImageView.layer.borderWidth = 1
+        serverImageView.layer.borderColor = UIColor.B4?.cgColor
+        
         serverView.layer.cornerRadius = 5
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
