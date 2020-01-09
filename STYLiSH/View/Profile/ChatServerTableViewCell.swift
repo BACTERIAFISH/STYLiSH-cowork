@@ -10,11 +10,18 @@ import UIKit
 
 class ChatServerTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var serverImageView: UIImageView!
+    
+    @IBOutlet weak var serverView: UIView!
+    
     @IBOutlet weak var severLabel: UILabel!
-
+    
+    @IBOutlet weak var timeLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        serverView.layer.cornerRadius = 5
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

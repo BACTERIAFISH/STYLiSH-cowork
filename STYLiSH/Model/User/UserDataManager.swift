@@ -16,8 +16,11 @@ class UserDataManager {
     
     private let userKey = "userKey"
     
-    func saveUser(user: User) {
+    private let userTokenKey = "userTokenKey"
+    
+    func saveUser(user: User, token: String) {
         UserDefaults.standard.set(try? PropertyListEncoder().encode(user), forKey: userKey)
+        UserDefaults.standard.set(token, forKey: userTokenKey)
         NotificationCenter.default.post(name: NSNotification.Name("saveUser"), object: self)
     }
     
@@ -31,5 +34,6 @@ class UserDataManager {
     
     func removeUser() {
         UserDefaults.standard.removeObject(forKey: userKey)
+        UserDefaults.standard.removeObject(forKey: userTokenKey)
     }
 }

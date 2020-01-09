@@ -40,7 +40,6 @@ class ProfileViewController: UIViewController {
             if let picture = user.picture {
                 strongSelf.userImageView.kf.setImage(with: URL(string: picture))
             }
-            
         }
     }
 

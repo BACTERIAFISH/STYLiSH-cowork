@@ -23,6 +23,8 @@ class ClientServiceViewController: STBaseViewController {
     
     var messages = [String]()
     
+    var messageTime = [Int]()
+    
     var isInit = true
 
     override func viewDidLoad() {
@@ -33,9 +35,9 @@ class ClientServiceViewController: STBaseViewController {
         chatTableView.dataSource = self
         chatTableView.delegate = self
         
-        if let accessToken = UserDefaults.standard.string(forKey: "STYLiSHToken") {
+        if let accessToken = UserDefaults.standard.string(forKey: "userTokenKey") {
             token = accessToken
-            
+
             socket.delegate = self
             socket.connect()
         }
@@ -63,10 +65,12 @@ class ClientServiceViewController: STBaseViewController {
         setRequest(action: .clientMessage, message: input)
         messages.append(SCWho.user.rawValue + input)
         chatRenew()
+        
+        inputTextField.text = ""
     }
     
     func setRequest(action: SCRequestAction, message: String = "") {
-        let auth = SCAuth(token: "99302b4dd7348df383356dea4a86efa2c45b95e567c7db358e793fdc9309fd68")
+        let auth = SCAuth(token: token)
         switch action {
         case .clientInit:
             let validate = SCValidate(action: action.rawValue, auth: auth)
@@ -95,7 +99,6 @@ class ClientServiceViewController: STBaseViewController {
         do {
             let response = try decoder.decode(SCResponse.self, from: data)
             messages = response.payload.messages
-            //print(response)
             chatRenew()
         } catch {
             print(error)
@@ -111,6 +114,13 @@ class ClientServiceViewController: STBaseViewController {
             chatTableView.scrollToRow(at: IndexPath(row: messages.count - 1, section: 0), at: .bottom, animated: true)
         }
     }
+    
+    func transferDate(second: Int) -> String {
+           let formatter = DateFormatter()
+           let date = Date(timeIntervalSince1970: TimeInterval(second/1000))
+           formatter.dateFormat = "yyyy/MM/dd\nhh:mm:ss"
+           return formatter.string(from: date)
+       }
 }
 
 extension ClientServiceViewController: WebSocketDelegate {
@@ -134,7 +144,9 @@ extension ClientServiceViewController: WebSocketDelegate {
             //print(response)
             chatRenew()
         } catch {
-            print(error)
+            messages.append(SCWho.server.rawValue + "很抱歉伺服器掛掉了，一切都是後端的問題。")
+            chatRenew()
+            print("websocket decode error: \(error)")
         }
         
     }
@@ -154,12 +166,15 @@ extension ClientServiceViewController: UITableViewDataSource {
         if messages[indexPath.row].contains(SCWho.server.rawValue) {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChatServerTableViewCell", for: indexPath) as? ChatServerTableViewCell else { return UITableViewCell() }
             
-            cell.severLabel.text = messages[indexPath.row]
+            let text = messages[indexPath.row].replacingOccurrences(of: SCWho.server.rawValue, with: "")
+            
+            cell.severLabel.text = text
             return cell
         } else if messages[indexPath.row].contains(SCWho.user.rawValue) {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChatClientTableViewCell", for: indexPath) as? ChatClientTableViewCell else { return UITableViewCell() }
             
-            cell.clientLabel.text = messages[indexPath.row]
+            let text = messages[indexPath.row].replacingOccurrences(of: SCWho.user.rawValue, with: "")
+            cell.clientLabel.text = text
             return cell
         } else {
             return UITableViewCell()
@@ -211,5 +226,4 @@ struct SCResponsePayload: Codable {
     let messages: [String]
     let auto: Bool
     let updateTime: Int
-    let callingCs: Bool
 }

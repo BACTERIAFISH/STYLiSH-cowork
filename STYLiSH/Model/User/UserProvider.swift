@@ -40,7 +40,7 @@ class UserProvider {
 
                     KeyChainManager.shared.token = userObject.data.accessToken
                     
-                    UserDataManager.shared.saveUser(user: userObject.data.user)
+                    UserDataManager.shared.saveUser(user: userObject.data.user, token: userObject.data.accessToken)
                     
                     completion(Result.success(()))
 
@@ -71,7 +71,7 @@ class UserProvider {
 
                     KeyChainManager.shared.token = userObject.data.accessToken
                     
-                    UserDataManager.shared.saveUser(user: userObject.data.user)
+                    UserDataManager.shared.saveUser(user: userObject.data.user, token: userObject.data.accessToken)
                     
                     completion(Result.success(()))
 
@@ -102,7 +102,7 @@ class UserProvider {
 
                     KeyChainManager.shared.token = userObject.data.accessToken
                     
-                    UserDataManager.shared.saveUser(user: userObject.data.user)
+                    UserDataManager.shared.saveUser(user: userObject.data.user, token: userObject.data.accessToken)
                     
                     completion(Result.success(()))
 
@@ -134,7 +134,7 @@ class UserProvider {
                     KeyChainManager.shared.token = userObject.data.accessToken
                     //print(userObject.data.accessToken)
                     
-                    UserDataManager.shared.saveUser(user: userObject.data.user)
+                    UserDataManager.shared.saveUser(user: userObject.data.user, token: userObject.data.accessToken)
                     
                     completion(Result.success(()))
 
@@ -210,7 +210,7 @@ class UserProvider {
 
                     KeyChainManager.shared.token = userObject.data.accessToken
                     
-                    UserDataManager.shared.saveUser(user: userObject.data.user)
+                    UserDataManager.shared.saveUser(user: userObject.data.user, token: userObject.data.accessToken)
                     
                     completion(Result.success(()))
 
