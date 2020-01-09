@@ -39,6 +39,8 @@ class ProfileViewController: UIViewController {
             strongSelf.userNameLabel.text = user.name
             if let picture = user.picture {
                 strongSelf.userImageView.kf.setImage(with: URL(string: picture))
+            } else {
+                strongSelf.userImageView.image = UIImage.asset(.profile_sticker_placeholder01)
             }
         }
     }

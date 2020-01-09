@@ -59,6 +59,7 @@ enum ImageAsset: String {
     case icons8_search_36
     case icons8_search_fill_36
     case icons8_technical_support_36
+    case profile_sticker_placeholder01
     
 }
 

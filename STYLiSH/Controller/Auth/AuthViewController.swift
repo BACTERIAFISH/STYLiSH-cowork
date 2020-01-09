@@ -87,7 +87,7 @@ class AuthViewController: STBaseViewController {
                 self?.onWCSignInFB(token: token)
 
             case .failure:
-
+                
                 LKProgressHUD.showSuccess(text: "Facebook 登入失敗!")
             }
         })
@@ -122,10 +122,15 @@ class AuthViewController: STBaseViewController {
     func onWCSignInFB(token: String) {
 
         LKProgressHUD.show()
+        
+        DispatchQueue.main.async { [weak self] in
+
+            self?.presentingViewController?.dismiss(animated: false, completion: nil)
+        }
 
         userProvider.signInFBToWC(fbToken: token, completion: { [weak self] result in
 
-            LKProgressHUD.dismiss()
+            //LKProgressHUD.dismiss()
 
             switch result {
 
@@ -138,10 +143,6 @@ class AuthViewController: STBaseViewController {
                 LKProgressHUD.showSuccess(text: "登入失敗!")
             }
 
-            DispatchQueue.main.async {
-
-                self?.presentingViewController?.dismiss(animated: false, completion: nil)
-            }
         })
     }
     
@@ -149,9 +150,14 @@ class AuthViewController: STBaseViewController {
 
         LKProgressHUD.show()
         
+        DispatchQueue.main.async { [weak self] in
+
+            self?.presentingViewController?.dismiss(animated: false, completion: nil)
+        }
+        
         userProvider.signInToWC(email: email, password: password) { [weak self] result in
             
-            LKProgressHUD.dismiss()
+            //LKProgressHUD.dismiss()
 
             switch result {
 
@@ -164,10 +170,6 @@ class AuthViewController: STBaseViewController {
                 LKProgressHUD.showSuccess(text: "登入失敗!")
             }
 
-            DispatchQueue.main.async {
-
-                self?.presentingViewController?.dismiss(animated: false, completion: nil)
-            }
         }
     }
 
@@ -175,9 +177,14 @@ class AuthViewController: STBaseViewController {
         
         LKProgressHUD.show()
         
+        DispatchQueue.main.async { [weak self] in
+            
+            self?.presentingViewController?.dismiss(animated: false, completion: nil)
+        }
+        
         userProvider.signInGoogleToWC(token: token, completion: { [weak self] result in
             
-            LKProgressHUD.dismiss()
+            //LKProgressHUD.dismiss()
             
             switch result {
                 
@@ -190,10 +197,6 @@ class AuthViewController: STBaseViewController {
                 LKProgressHUD.showSuccess(text: "登入失敗!")
             }
             
-            DispatchQueue.main.async {
-                
-                self?.presentingViewController?.dismiss(animated: false, completion: nil)
-            }
         })
     }
     
