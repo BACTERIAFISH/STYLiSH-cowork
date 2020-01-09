@@ -79,7 +79,7 @@ class FilterViewController: UIViewController, UITableViewDelegate, UITableViewDa
             if let loadData = data {
                 do {
                     let respondseData = try decoder.decode(Menu.self, from: loadData)
-                    print(respondseData)
+                    //print(respondseData)
                     
                     self.productItem += respondseData.data
                     

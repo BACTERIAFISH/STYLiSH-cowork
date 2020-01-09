@@ -100,7 +100,7 @@ class STTabBarViewController: UITabBarController, UITabBarControllerDelegate {
 
         viewControllers = tabs.map({ $0.controller() })
 
-        trolleyTabBarItem = viewControllers?[2].tabBarItem
+        trolleyTabBarItem = viewControllers?[3].tabBarItem
         
         trolleyTabBarItem.badgeColor = .brown
         
