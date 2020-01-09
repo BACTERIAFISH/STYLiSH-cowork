@@ -25,11 +25,11 @@ class ShippingTableViewCell: UITableViewCell {
             case "pending delivery":
                 statusLabel.layer.borderColor = UIColor.hexStringToUIColor(hex: "A63D40").cgColor
                 statusLabel.textColor = UIColor.hexStringToUIColor(hex: "A63D40")
-                statusLabel.text = "待出貨"
+                statusLabel.text = "待配送"
             case "delivering":
                 statusLabel.layer.borderColor = UIColor.hexStringToUIColor(hex: "90A959").cgColor
                 statusLabel.textColor = UIColor.hexStringToUIColor(hex: "90A959")
-                statusLabel.text = "運送中"
+                statusLabel.text = "配送中"
             case "pending pickup":
                 statusLabel.layer.borderColor = UIColor.hexStringToUIColor(hex: "6494AA").cgColor
                 statusLabel.textColor = UIColor.hexStringToUIColor(hex: "6494AA")

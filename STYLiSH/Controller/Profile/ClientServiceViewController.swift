@@ -19,7 +19,7 @@ class ClientServiceViewController: STBaseViewController {
     
     var token = ""
     
-    let socket = WebSocket(url: URL(string: "ws://thewenchin.com:8080")!)
+    let socket = WebSocket(url: URL(string: "wss://thewenchin.com:8080")!)
     
     var messages = [String]()
     
@@ -55,7 +55,6 @@ class ClientServiceViewController: STBaseViewController {
     }
     
     deinit {
-        print("deinit")
         socket.disconnect(forceTimeout: 0)
         socket.delegate = nil
     }
@@ -133,7 +132,7 @@ extension ClientServiceViewController: WebSocketDelegate {
     }
     
     func websocketDidDisconnect(socket: WebSocketClient, error: Error?) {
-        messages.append(SCWho.server.rawValue + "很抱歉伺服器掛掉了，一切都是後端的問題。")
+        messages.append(SCWho.serverBot.rawValue + "很抱歉伺服器掛掉了，一切都是後端的問題。")
         
         let time = Int(Date().timeIntervalSince1970) * 1000
         messageTime.append(time)
@@ -148,10 +147,11 @@ extension ClientServiceViewController: WebSocketDelegate {
         do {
             let response = try decoder.decode(SCResponse.self, from: data)
             messages = response.payload.messages
+            messageTime = response.payload.updateTime
             //print(response)
             chatRenew()
         } catch {
-            messages.append(SCWho.server.rawValue + "很抱歉伺服器掛掉了，一切都是後端的問題。")
+            messages.append(SCWho.serverBot.rawValue + "很抱歉伺服器掛掉了，一切都是後端的問題。")
             let time = Int(Date().timeIntervalSince1970) * 1000
             messageTime.append(time)
             chatRenew()
@@ -175,19 +175,23 @@ extension ClientServiceViewController: UITableViewDataSource {
         let message = messages[indexPath.row]
         let time = transferDate(second: messageTime[indexPath.row])
         
-        if message.contains(SCWho.server.rawValue) {
+        if message.contains(SCWho.serverBot.rawValue) || message.contains(SCWho.serverPerson.rawValue) {
             
             if message.contains(SCWho.image.rawValue) {
                 guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChatServerImageTableViewCell", for: indexPath) as? ChatServerImageTableViewCell else { return UITableViewCell() }
 
-                let text = message.replacingOccurrences(of: SCWho.server.rawValue + SCWho.image.rawValue, with: "")
-                cell.url = text
+                let url = message.replacingOccurrences(of: SCWho.serverBot.rawValue, with: "")
+                    .replacingOccurrences(of: SCWho.serverPerson.rawValue, with: "")
+                    .replacingOccurrences(of: SCWho.image.rawValue, with: "")
+                
+                cell.serverImageView.kf.setImage(with: URL(string: url))
                 cell.timeLabel.text = time
                 return cell
             }
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "ChatServerTableViewCell", for: indexPath) as? ChatServerTableViewCell else { return UITableViewCell() }
             
-            let text = message.replacingOccurrences(of: SCWho.server.rawValue, with: "")
+            let text = message.replacingOccurrences(of: SCWho.serverBot.rawValue, with: "")
+                .replacingOccurrences(of: SCWho.serverPerson.rawValue, with: "")
             
             cell.severLabel.text = text
             cell.timeLabel.text = time
@@ -221,7 +225,8 @@ extension ClientServiceViewController: UITableViewDelegate {
 }
 
 enum SCWho: String {
-    case server = "server_bot==@%&"
+    case serverBot = "server_bot==@%&"
+    case serverPerson = "server_person==@%&"
     case user = "user==@%&"
     case image = "@@@@"
 }
