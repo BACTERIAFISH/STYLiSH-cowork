@@ -88,5 +88,7 @@
 	</array>
 	<key>WCBaseURL</key>
 	<string>https://thewenchin.com/api/1.0</string>
+	<key>GoogleClientID</key>
+	<string>413375994511-esf1u896jdk0qalhnicfpt0404sh28tl.apps.googleusercontent.com</string>
 </dict>
 </plist>

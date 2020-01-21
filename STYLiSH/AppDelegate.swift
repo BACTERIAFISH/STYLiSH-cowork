@@ -36,7 +36,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
         TPDSetup.shareInstance().serverSync()
         
-        GIDSignIn.sharedInstance().clientID = "413375994511-esf1u896jdk0qalhnicfpt0404sh28tl.apps.googleusercontent.com"
+        let clientID = Bundle.STValueForString(key: "GoogleClientID")
+        
+        GIDSignIn.sharedInstance().clientID = clientID
+
         GIDSignIn.sharedInstance().delegate = self
 
         ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
